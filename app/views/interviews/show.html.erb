@@ -1,0 +1,60 @@
+<h1>CodeMirror: Ruby mode</h1>
+
+<select id="themechange" onchange="selectTheme()">
+  <option>default</option>
+  <option>3024-day</option>
+  <option>3024-night</option>
+  <option>ambiance</option>
+  <option>base16-dark</option>
+  <option>base16-light</option>
+  <option>blackboard</option>
+  <option>cobalt</option>  
+  <option>eclipse</option>
+  <option>elegant</option>
+  <option>erlang-dark</option>
+  <option>lesser-dark</option>
+  <option>midnight</option>
+  <option>monokai</option>
+  <option>neat</option>
+  <option>night</option>
+  <option>rubyblue</option>
+  <option>solarized dark</option>
+  <option>solarized light</option>
+  <option>tomorrow-night-eighties</option>
+  <option>twilight</option>
+  <option>vibrant-ink</option>
+  <option>xq-dark</option>
+  <option>xq-light</option>
+</select><br><br>
+
+
+<form id="CodeMirror-codebox">
+    <textarea id="code" name="code">
+      #Type your code here.
+    </textarea>
+
+    <div class="CodeMirror-gutter-filler"></div>    
+    </div>
+
+</form>
+
+
+
+
+<script type="text/javascript">
+
+  var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+    lineNumbers: true
+  });
+  var input = document.getElementById("select");
+  function selectTheme() {
+    var theme = input.options[input.selectedIndex].innerHTML;
+    editor.setOption("theme", theme);
+  }
+  var choice = document.location.search &&
+               decodeURIComponent(document.location.search.slice(1));
+  if (choice) {
+    input.value = choice;
+    editor.setOption("theme", choice);
+  }
+</script>
