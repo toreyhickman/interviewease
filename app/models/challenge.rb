@@ -7,7 +7,6 @@ class Challenge < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :code
   validates_presence_of :test_code
-  validates_presence_of :private
 
   # Associations
   belongs_to :company

@@ -16,6 +16,6 @@ class Candidate < ActiveRecord::Base
   has_many :attempted_challenges, :through => :given_challenges, :source => :challenge
 
   has_many :covered_topics
-  has_many :addressed_topics, :through => :covered_topics, :source => :topics
+  has_many :addressed_topics, :through => :covered_topics, :source => :topic
 
 end

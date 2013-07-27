@@ -1,6 +1,7 @@
 class FeedbackQuestion < ActiveRecord::Base
 
   # Accessible attributes
+  attr_accessible :prompt
 
   # Validations
   validates_presence_of :prompt
