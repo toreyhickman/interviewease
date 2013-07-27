@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'bcrypt-ruby'
 
+# Gems required for text editor:
 gem 'pusher'
 gem 'thin'
 gem 'em-http-request'
