@@ -12,7 +12,7 @@ class Employee < ActiveRecord::Base
   belongs_to :company
 
   has_many :interviews
-  has_many :interviewees, :through => :interviews, :scope => :candidate
+  has_many :interviewees, :through => :interviews, :source => :candidate
   has_many :feedback_responses
   has_many :written_challenges, :class_name => "Challenge"
 

@@ -10,10 +10,10 @@ class Candidate < ActiveRecord::Base
   belongs_to :company
 
   has_many :interviews
-  has_many :interviewers, :through => interviews, :scope => :employee
+  has_many :interviewers, :through => :interviews, :source => :employee
 
   has_many :given_challenges
-  has_many :attempted_challenges, :through => :given_challenges, :scope => :challenge
+  has_many :attempted_challenges, :through => :given_challenges, :source => :challenge
 
   has_many :covered_topics
   has_many :addressed_topics, :through => :covered_topics, :source => :topics
