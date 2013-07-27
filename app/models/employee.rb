@@ -1,6 +1,10 @@
+require 'bcrypt'
+
 class Employee < ActiveRecord::Base
+  include BCrypt
+
   # Accessible attributes
-  attr_accessible :email, :name, :password_hash
+  attr_accessible :email, :name, :password_hash, :password
 
   # Validations
   validates :name, presence: true
@@ -17,8 +21,6 @@ class Employee < ActiveRecord::Base
   has_many :written_challenges, :class_name => "Challenge"
 
   # bcrypt
-  include BCrypt
-
   def password
     @password ||= Password.new(password_hash)
   end
