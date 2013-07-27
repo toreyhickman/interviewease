@@ -11,5 +11,6 @@ class Company < ActiveRecord::Base
   has_many :candidates
   has_many :challenges
   has_many :topics
+  has_many :feedback_questions, as: :question
 
 end
