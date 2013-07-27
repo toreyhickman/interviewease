@@ -6,6 +6,7 @@ class CreateInterviews < ActiveRecord::Migration
       t.boolean :complete, default: false
       t.datetime :start
       t.string :identifier
+      t.boolean :recommend_hire
 
       t.timestamps
     end
