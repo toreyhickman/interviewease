@@ -14,5 +14,6 @@ class Challenge < ActiveRecord::Base
   belongs_to :author, :class_name => "Employee"
   has_many :given_challenges
   has_many :attempters, :through => :given_challenges, :scope => :condidate
+  has_many :feedback_questions, as: :question
 
 end
