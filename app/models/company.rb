@@ -1,10 +1,15 @@
 class Company < ActiveRecord::Base
+  # Accessible attributes
   attr_accessible :name
 
+  # Validations
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  # Associations
   has_many :employees
-  has_many :interviews
+  has_many :candidates
   has_many :challenges
+  has_many :topics
 
 end
