@@ -1,10 +1,21 @@
 class Candidate < ActiveRecord::Base
+  # Accessible 
   attr_accessible :email, :name
 
+  # Validations
   validates :name, presence: true
-  validates :name, uniqueness: true
-  has_many :employees
+  validates_uniqueness_of :name, :scope => :company_id
+
+  # Associations
+  belongs_to :company
+
   has_many :interviews
-  has_many :challenges
+  has_many :interviewers, :through => interviews, :scope => :employee
+
+  has_many :given_challenges
+  has_many :attempted_challenges, :through => :given_challenges, :scope => :challenge
+
+  has_many :covered_topics
+  has_many :addressed_topics, :through => :covered_topics, :source => :topics
 
 end

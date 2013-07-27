@@ -3,7 +3,7 @@ class CreateCandidates < ActiveRecord::Migration
     create_table :candidates do |t|
       t.string :name
       t.string :email
-      t.belongs_to :interview
+      t.belongs_to :company
 
       t.timestamps
     end
