@@ -1,0 +1,63 @@
+var code;
+var timeSinceLastKeypress = 0;
+
+function update_code(code)
+{
+  $.post('/api/update_code', { "code": code });
+}
+
+function selectTheme()
+{
+  previousCode = code.getValue();
+  $('#code').html("");
+  code = CodeMirror(document.getElementById("code"),
+  {
+    lineNumbers: true,
+    theme: $('#themechange').val(),
+    value: previousCode
+  });
+}
+
+$(document).ready(function()
+{
+  if($('div').hasClass('code'))
+  {
+    var updates = [];
+    var socket = new Pusher('<%= ENV['pusher_key'] %>');
+    var channel = socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
+
+    setInterval(function()
+    {
+      timeSinceLastKeypress++;
+    }, 1000);
+
+    setInterval(function()
+    {
+      if(updates.length > 0)
+      {
+        update_code(updates.pop());
+      }
+    }, 10);
+
+    code = CodeMirror(document.getElementById("code"),
+    {
+      lineNumbers: true
+    });
+
+    channel.bind('update_code', function(data)
+    {
+      if(timeSinceLastKeypress > 1)
+      {
+        cursor = code.getCursor();
+        code.setValue(data);
+        code.setCursor(cursor);
+      }
+    });
+
+    $('#code').on('keyup', function(e)
+    {
+      timeSinceLastKeypress = 0;
+      updates.push(code.getValue());
+    });
+  }
+});
