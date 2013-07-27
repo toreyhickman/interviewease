@@ -6,6 +6,11 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'bcrypt-ruby'
 
+# Gems required for text editor:
+gem 'pusher'
+gem 'thin'
+gem 'em-http-request'
+gem 'eventmachine'
 
 # Gems used only for assets and not required
 # in production environments by default.
