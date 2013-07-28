@@ -76,6 +76,9 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.7)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.8)
     nokogiri (1.5.10)
     pg (0.16.0)
     polyglot (0.3.3)
@@ -160,6 +163,8 @@ DEPENDENCIES
   eventmachine
   faker
   jquery-rails
+  net-sftp
+  net-ssh
   pg
   pusher
   rails (= 3.2.13)
