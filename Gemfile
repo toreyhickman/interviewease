@@ -12,6 +12,10 @@ gem 'thin'
 gem 'em-http-request'
 gem 'eventmachine'
 
+# Gems required for code exec:
+gem 'net-ssh'
+gem 'net-sftp'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
