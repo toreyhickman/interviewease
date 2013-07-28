@@ -1,5 +1,5 @@
 class Candidate < ActiveRecord::Base
-  # Accessible 
+  # Accessible attributes
   attr_accessible :email, :name
 
   # Validations
