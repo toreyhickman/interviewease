@@ -59,5 +59,21 @@ $(document).ready(function()
       timeSinceLastKeypress = 0;
       updates.push(code.getValue());
     });
+
+    $('#run_code').on('click', function(e) {
+      e.preventDefault();
+      toExec = code.getValue();
+      $.ajax({
+        url: '/api/run_code',
+        type: 'post',
+        data: { code: toExec },
+        success: function(response) {
+          $('#code_results').html(response.code);
+        },
+        error: function(response) {
+          $('#code_results').html("Something went wrong. Please try again.");
+        }
+      });
+    });
   }
 });
