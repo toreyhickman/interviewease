@@ -3,12 +3,9 @@ require 'spec_helper'
 describe Company do
 
   context "validations" do
-    it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name) }
   end
 
   context "accessible attributes" do
-    it { should allow_mass_assignment_of(:name) }
   end
 
   context "associations" do
