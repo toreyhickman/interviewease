@@ -18,7 +18,7 @@ class Employee < ActiveRecord::Base
   has_many :interviews
   has_many :interviewees, :through => :interviews, :source => :candidate
   has_many :feedback_responses
-  has_many :written_challenges, :class_name => "Challenge"
+  has_many :written_challenges, :class_name => "Challenge", :foreign_key => :author_id
 
   # bcrypt
   def password
