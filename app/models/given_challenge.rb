@@ -1,6 +1,7 @@
 class GivenChallenge < ActiveRecord::Base
 
   # Accessible attributes
+  attr_accessible :candidate_id, :challenge_id, :interview_id
 
   # Validations
 
