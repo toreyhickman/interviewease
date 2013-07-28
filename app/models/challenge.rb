@@ -10,7 +10,7 @@ class Challenge < ActiveRecord::Base
 
   # Associations
   belongs_to :company
-  belongs_to :author, :class_name => "Employee"
+  belongs_to :author#, :class_name => "Employee"
   has_many :given_challenges
   has_many :attempters, :through => :given_challenges, :source => :candidate
   has_many :feedback_questions, as: :question
