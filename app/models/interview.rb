@@ -1,6 +1,6 @@
 class Interview < ActiveRecord::Base
   # Accessible attributes
-  attr_accessible :start, :complete
+  attr_accessible :start, :complete, :candidate_id, :employee_id 
 
   # Validations
   validates_presence_of :candidate_id
@@ -12,9 +12,6 @@ class Interview < ActiveRecord::Base
 
   has_many :given_challenges
   has_many :challenges, :through => :given_challenges
-
-  # Set primary key
-  # set_primary_key "identifier"
 
   # Callback functions
   before_save :create_identifier
@@ -43,7 +40,7 @@ class Interview < ActiveRecord::Base
   end
 
   def create_identifier
-    self.identifier = random_string
+    self.identifier ||= random_string
   end
 
 end
