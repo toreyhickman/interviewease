@@ -1,1 +1,12 @@
 <h1><%= @employee.name %></h1>
+
+<%= link_to "Back To Company Homepage", @employee.company %><br><br>
+
+<ul>
+  <li><%= link_to "Edit Employee", edit_employee_path(@employee.id) %></li>
+  <li><%= link_to "Delete Delete", @employee, method: :delete %></li>
+</ul>
+<p>-------------</p>
+<h2>Email: <%= @employee.email %></h2>
+<h2>Company: <%= @employee.company.name %></h2>
+
