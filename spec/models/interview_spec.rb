@@ -23,11 +23,8 @@ describe Interview do
 
   context "before_save callback" do
     it "calls create_identifier before save" do
-      # interview = double("Interview")
-      # interview.should_receive(:create_identifier)
-      # interview.stub(:valid?).and_return(true)
-      # interview.stub(:save)
-      interview.identifier.should_not be_nil 
+      interview.should_receive(:create_identifier)
+      interview.save
     end
   end
 

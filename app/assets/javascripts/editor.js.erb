@@ -1,59 +1,21 @@
 var code;
 var timeSinceLastKeypress = 0;
 
-function update_code(code)
-{
-  $.post('/api/update_code', { "code": code });
-}
-
-function selectTheme()
-{
-  previousCode = code.getValue();
-  $('#code').html("");
-  code = CodeMirror(document.getElementById("code"),
+function InterviewEditor() {
+  this.updates = [];
+  this.socket = new Pusher('<%= ENV['pusher_key'] %>');
+  this.channel = socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
+  this.code = CodeMirror(document.getElementById("code"),
   {
-    lineNumbers: true,
-    theme: $('#themechange').val(),
-    value: previousCode
+    lineNumbers: true
   });
-}
 
-$(document).ready(function()
-{
-  if($('div').hasClass('code'))
-  {
-    var updates = [];
-    var socket = new Pusher('<%= ENV['pusher_key'] %>');
-    var channel = socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
+  setInterval(this.incrementLastKeypress, 1000);
+  setInterval(this.updateCode, 10);
 
-    setInterval(function()
-    {
-      timeSinceLastKeypress++;
-    }, 1000);
 
-    setInterval(function()
-    {
-      if(updates.length > 0)
-      {
-        update_code(updates.pop());
-      }
-    }, 10);
-
-    code = CodeMirror(document.getElementById("code"),
-    {
-      lineNumbers: true
-    });
-
-    channel.bind('update_code', function(data)
-    {
-      if(timeSinceLastKeypress > 1)
-      {
-        cursor = code.getCursor();
-        code.setValue(data);
-        code.setCursor(cursor);
-      }
-    });
-
+  channel.bind('update_code', updateView);
+  
     $('#code').on('keyup', function(e)
     {
       timeSinceLastKeypress = 0;
@@ -75,5 +37,47 @@ $(document).ready(function()
         }
       });
     });
+  }
+
+}
+
+InterviewEditor.prototype.updateView = function() {
+  if(this.timeSinceLastKeypress > 1)
+  {
+    cursor = code.getCursor();
+    code.setValue(data);
+    code.setCursor(cursor);
+  }
+}
+InterviewEditor.prototype.incrementLastKeypress = function() {
+  this.timeSinceLastKeypress++;
+};
+
+InterviewEditor.prototype.update_code = function(code) {
+  if(this.updates.length > 0) {
+    $.post('/api/update_code', { "code": code });
+  }
+}
+
+InterviewEditor.prototype.selectTheme = function() {
+  previousCode = code.getValue();
+  $('#code').html("");
+  code = CodeMirror(document.getElementById("code"),
+  {
+    lineNumbers: true,
+    theme: $('#themechange').val(),
+    value: previousCode
+  });
+}
+
+  this.initialize: function() {
+    
+  }
+
+}
+
+$(document).ready(function() {
+  if($('div').hasClass('code')) {
+    var editor = new InterviewEditor();
   }
 });

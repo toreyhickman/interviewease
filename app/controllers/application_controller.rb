@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # Application helper methods
   helper_method :current_user, :login
 
+  # Move this to SessionsController
   def login
     @employee = Employee.find_by_email(params[:email])
     if @employee && @employee.password == params[:password]

@@ -1,7 +1,7 @@
 <h1>New Challenge</h1>
 <%= link_to "Back To Company Homepage", @company %><br><br>
 
-  <%= form_for @challenge, url: {action: "create"} do |f| %>
+<%= form_for @challenge do |f| %>
 
   <%= f.label "Title: " %><br><br>
   <%= f.text_field (:title) %><br><br>  

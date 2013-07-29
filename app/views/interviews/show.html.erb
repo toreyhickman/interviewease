@@ -35,6 +35,7 @@
 <div id="code_results"></div>
 
 <style>
+  // move to app/assets/stylesheets/interviews.css
   #remotes video {
       height: 300px;
   }
@@ -42,14 +43,16 @@
 
 <video id="localVideo" style="height: 300px;"></video>
 
-<!--
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="socket.io.js"></script>
-<script src="simplewebrtc.bundle.js"></script>
--->
-
-
 <script>
+  // Move the below JS to app/javascripts/interview_video_client.js
+  // function InterviewVideoChat() {
+  //
+  // }
+  $(document).ready( function() {
+    var client = InterviewVideoChat();
+  })
+  
+
     // grab the room from the URL
     var room = "test"                   //location.search && location.search.split('?')[1];
 

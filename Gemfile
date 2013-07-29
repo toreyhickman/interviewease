@@ -5,6 +5,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'bcrypt-ruby'
+gem 'sqlite3'
 
 # Gems required for text editor:
 gem 'pusher'

@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
 
   # Associations
   belongs_to :company
-  has_many :covered_topics
+  has_many :topic_assignments
   has_many :candidates, :through => :covered_topics
 
 end

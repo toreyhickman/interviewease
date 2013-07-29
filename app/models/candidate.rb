@@ -12,10 +12,12 @@ class Candidate < ActiveRecord::Base
   has_many :interviews
   has_many :interviewers, :through => :interviews, :source => :employee
 
-  has_many :given_challenges
+  # maybe better names?
+  has_many :challenge_assignments
   has_many :attempted_challenges, :through => :given_challenges, :source => :challenge
 
-  has_many :covered_topics
+  # maybe better names?
+  has_many :topic_assignments
   has_many :addressed_topics, :through => :covered_topics, :source => :topic
 
 end

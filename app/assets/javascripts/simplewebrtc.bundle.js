@@ -6,8 +6,6 @@ var webrtcSupport = require('webrtcsupport');
 var attachMediaStream = require('attachmediastream');
 var getScreenMedia = require('getscreenmedia');
 
-
-
 function SimpleWebRTC(opts) {
     var self = this;
     var options = opts || {};

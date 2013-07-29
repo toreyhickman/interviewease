@@ -14,6 +14,8 @@ class Interview < ActiveRecord::Base
   has_many :challenges, :through => :given_challenges
 
   # Callback functions
+  # consider before_create, so we only set the identifier when
+  # it hasn't been set previously
   before_save :create_identifier
 
   # Methods

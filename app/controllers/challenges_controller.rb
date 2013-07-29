@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
 
-   def index
+  def index
   end
 
   def show
@@ -12,14 +12,14 @@ class ChallengesController < ApplicationController
   end
 
   def update
-    @challenge = Challenge.find(params[:id])
-    @challenge.update_attributes(params[:challenge])
-    p @challenge
-    p "Hi*****"
+    # for security
+    @challenge = current_user.challenges.find(params[:id])
+    @challenge.update_attributes(params[:challenge]) 
   end
 
   def destroy
-    @challenge = Challenge.find(params[:id])
+    # for security
+    @challenge = current_user.challenges.find(params[:id])
     @challenge.destroy
   end
 
