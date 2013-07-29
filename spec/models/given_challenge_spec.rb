@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Interview do
+describe GivenChallenge do
 
   context "validations" do
   end
