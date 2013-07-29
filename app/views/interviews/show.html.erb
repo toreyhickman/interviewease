@@ -1,4 +1,4 @@
-<h1>CodeMirror: Ruby mode</h1>
+<h1>Interview</h1>
 
 <select id="themechange" onchange="selectTheme()">
   <option>default</option>
@@ -33,3 +33,41 @@
 
 <a href="#" id="run_code">Run!</a>
 <div id="code_results"></div>
+
+<style>
+  #remotes video {
+      height: 300px;
+  }
+</style>
+
+<video id="localVideo" style="height: 300px;"></video>
+
+<!--
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="socket.io.js"></script>
+<script src="simplewebrtc.bundle.js"></script>
+-->
+
+
+<script>
+    // grab the room from the URL
+    var room = "test"                   //location.search && location.search.split('?')[1];
+
+    // create our webrtc connection
+    var webrtc = new SimpleWebRTC({
+        // the id/element dom element that will hold "our" video
+        localVideoEl: 'localVideo',
+        // the id/element dom element that will hold remote videos
+        remoteVideosEl: 'remotes',
+        // immediately ask for camera access
+        autoRequestMedia: true,
+        log: true
+    });
+
+    // when it's ready, join if we got a room from the URL
+    webrtc.on('readyToCall', function () {
+        // you can name it anything
+        if (room) webrtc.joinRoom(room);
+    });
+    
+</script>

@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= socket.io.js
+//= simplewebrtc.bundle.js
 //= require_tree .
