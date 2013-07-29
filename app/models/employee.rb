@@ -22,7 +22,7 @@ class Employee < ActiveRecord::Base
 
   # bcrypt
   def password
-    @password ||= Password.new(password_hash)
+    @password ||= Password.new(password_hash) if password_hash
   end
 
   def password=(new_password)

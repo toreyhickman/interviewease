@@ -1,8 +1,12 @@
 class CompaniesController < ApplicationController
 
-  def signup
-    @company = Company.create(name: params[:name])
-    render "show"
+  def create
+    @company = Company.create!(name: params[:name])
+    @employee = Employee.create!(params[:employee])
+    @company.employees << @employee
+    session[:user_id] = @employee.id
+
+    redirect_to @company
   end
 
   def show

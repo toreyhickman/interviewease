@@ -4,16 +4,6 @@ class ApplicationController < ActionController::Base
   # Application helper methods
   helper_method :current_user, :login
 
-  def login
-    @employee = Employee.find_by_email(params[:email])
-    if @employee && @employee.password == params[:password]
-      session[:user_id] = @employee.id
-      render "show"
-    else
-      redirect_to root_url
-    end
-  end
-
   def logout
      session[:user_id] = nil
      redirect_to root_url

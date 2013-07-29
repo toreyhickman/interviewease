@@ -17,6 +17,8 @@ class EmployeesController < ApplicationController
   def destroy
     @employee = Employee.find(params[:id])
     @employee.destroy
+    session[:user_id] = nil
+    redirect_to login
   end
 
   def new
