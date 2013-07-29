@@ -12,4 +12,5 @@ PairingRoulette::Application.routes.draw do
   match '/api/run_code', to: 'api#run_code'
   match '/login', to: 'employees#login'
   match '/signup', to: 'companies#signup'
+  match '/logout', to: 'employees#logout'
 end

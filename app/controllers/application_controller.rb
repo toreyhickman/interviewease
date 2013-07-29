@@ -10,9 +10,14 @@ class ApplicationController < ActionController::Base
       session[:user_id] = @employee.id
       render "show"
     else
-      render "index"
+      redirect_to root_url
     end
   end
+
+  def logout
+     session[:user_id] = nil
+     redirect_to root_url
+   end
 
   def current_user
     Employee.find_by_id(session[:user_id])

@@ -12,6 +12,10 @@ class ChallengesController < ApplicationController
   end
 
   def update
+    @challenge = Challenge.find(params[:id])
+    @challenge.update_attributes(params[:challenge])
+    p @challenge
+    p "Hi*****"
   end
 
   def destroy
