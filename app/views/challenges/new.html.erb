@@ -1,0 +1,16 @@
+<h1>New Challenge</h1>
+<%= link_to "Back To Company Homepage", @company %><br><br>
+
+  <%= form_for @challenge, url: {action: "create"} do |f| %>
+
+  <%= f.label "Title: " %><br><br>
+  <%= f.text_field (:title) %><br><br>  
+  <%= f.label "Code: " %><br><br>
+  <%= f.text_area (:code) %><br><br>
+  <%= f.label "Test Code: " %><br><br>
+  <%= f.text_area (:test_code) %><br><br>
+  <%= f.label "Private? " %><br><br>
+<p>Put true/false here</p>
+  <%= f.submit "Submit" %><br><br>
+
+<% end %>

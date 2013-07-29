@@ -28,3 +28,17 @@ body {
   width: 720px;
   margin: auto !important;
 }
+
+#interviews, #challenges, #topics, #employees {
+  width: 18%;
+  float: left;
+  border: 1px solid black;
+  padding: 20px;
+  position: static;
+  top: 0px;
+}
+
+#interviews ul, #challenges ul, #topics ul, #employees ul {
+  padding: 0px;
+  list-style: none;
+}
