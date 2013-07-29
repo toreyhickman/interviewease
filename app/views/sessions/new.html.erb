@@ -11,11 +11,21 @@
 <% end %>
 <p>-----------</p>
 <h2>Register your company here:</h2>
+
 <%= form_tag ({controller: "companies", action: "signup"}) do %>
 
   <%= label_tag(:name, "Company Name: ") %><br><br>
   <%= text_field_tag(:name) %><br><br>
   <%= submit_tag "Submit" %><br><br>
 
-  <% end %>
+<% end %>
 
+
+<!-- <h2>Check in for your interview.</h2>
+ --><%#= form_tag ({controller: "interviews", action: "show"}) do %>
+
+  <%#= label_tag(:identifier, "Type in your interview code here.") %>
+
+  <%#= text_field_tag(:identifier) %>
+  <%#= submit_tag "Submit" %>
+<%# end %>
