@@ -7,10 +7,11 @@ PairingRoulette::Application.routes.draw do
   resources :challenges
   resources :topics
   resources :candidates
+  resources :sessions
   match '/interviews/:identifier', to: 'interviews#show'
   match '/api/update_code', to: 'api#update_code'
   match '/api/run_code', to: 'api#run_code'
-  match '/login', to: 'employees#login'
+  match '/login', to: 'sessions#create'
+  match '/logout', to: 'sessions#destroy', via: [:delete]
   match '/signup', to: 'companies#signup'
-  match '/logout', to: 'employees#logout'
 end

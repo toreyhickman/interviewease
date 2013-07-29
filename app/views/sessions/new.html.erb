@@ -1,6 +1,6 @@
 
 <h2>Employees: sign in here</h2>
-<%= form_tag ({controller: "employees", action: "login"}) do %>
+<%= form_tag ({controller: "sessions", action: "create"}) do %>
 
 <%= label_tag(:email, "Email: ") %><br><br>
 <%= text_field_tag(:email) %><br><br>
@@ -12,14 +12,22 @@
 <p>-----------</p>
 <h2>Register your company here:</h2>
 
-<%= form_tag ({controller: "companies", action: "signup"}) do %>
+<%= form_tag ({controller: "companies", action: "create"}) do %>
 
   <%= label_tag(:name, "Company Name: ") %><br><br>
   <%= text_field_tag(:name) %><br><br>
+  <%= fields_for Employee.new do |employee| %>
+    <%= employee.label(:name, "Enter your name.") %>
+    <%= employee.text_field(:name) %><br><br>
+    <%= employee.label(:email, "Enter your email.") %>
+    <%= employee.text_field(:email) %><br><br>
+    <%= employee.label(:password, "Enter your password.") %>
+    <%= employee.text_field(:password) %><br><br>
+  <% end %>
+  
   <%= submit_tag "Submit" %><br><br>
 
 <% end %>
-
 
 <!-- <h2>Check in for your interview.</h2>
  --><%#= form_tag ({controller: "interviews", action: "show"}) do %>
