@@ -11,14 +11,14 @@ class SessionsController < ApplicationController
     @employee = Employee.find_by_email(params[:email])
     if @employee && @employee.password == params[:password]
       session[:user_id] = @employee.id
-      render "show"
+      redirect_to employee_path(current_user)
     else
       redirect_to root_url
     end
   end
 
   def destroy
-   session[:user_id] = nil
+   reset_session
    redirect_to root_url
  end
 
