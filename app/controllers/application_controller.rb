@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
 
   def login
     @employee = Employee.find_by_email(params[:email])
-    if @employee.password == params[:password]
+    if @employee && @employee.password == params[:password]
       session[:user_id] = @employee.id
-      render "index"
-    else
       render "show"
+    else
+      render "index"
     end
   end
 
