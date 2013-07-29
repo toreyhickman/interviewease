@@ -1,0 +1,9 @@
+<h1>Edit Employee: <%= @employee.name %></h1>
+
+<%= form_for @employee, url: {action: "update"} do |f| %>
+
+  <%= f.text_field (:email) %><br><br>
+  <%= f.text_field (:password), value: "" %><br><br>
+  <%= f.submit "Submit" %><br><br>
+
+<% end %>
