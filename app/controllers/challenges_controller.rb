@@ -20,9 +20,13 @@ class ChallengesController < ApplicationController
   end
 
   def new
+    employee = Employee.find(session[:user_id])
+    @company = Company.find(employee.company.id)
+    @challenge = Challenge.new
   end
 
   def create
+    @challenge = Challenge.create(params[:challenge])
   end
 
 end
