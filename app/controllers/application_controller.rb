@@ -5,16 +5,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :login
 
   def login
-    @user = User.find_by_email(params[:email])
-    if @user.password == params[:password]
-      session[:user_id] = @user.id
+    @employee = Employee.find_by_email(params[:email])
+    if @employee.password == params[:password]
+      session[:user_id] = @employee.id
+      render "index"
     else
-      @user.errors.full_messages
+      render "show"
     end
   end
 
   def current_user
-    User.find_by_id(session[:user_id])
+    Employee.find_by_id(session[:user_id])
   end
 
 end
