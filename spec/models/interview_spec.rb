@@ -21,13 +21,14 @@ describe Interview do
     it { should have_many(:challenges).through(:given_challenges) }
   end
 
-  context "before_save callback" do
-    it "calls create_identifier before save" do
-      # interview = double("Interview")
-      # interview.should_receive(:create_identifier)
-      # interview.stub(:valid?).and_return(true)
-      # interview.stub(:save)
-      interview.identifier.should_not be_nil 
+  context "before_create callback" do
+    it "does not call create_identifier before save" do
+      interview.should_not_receive(:create_identifier)
+      interview.save
+    end
+
+    it "assigns a 19-character-long string to identifier before create" do
+      interview.identifier.length.should eq 19
     end
   end
 
