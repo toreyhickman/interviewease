@@ -20,9 +20,15 @@ class EmployeesController < ApplicationController
   end
 
   def new
+    @employee = Employee.new
   end
 
   def create
+    @employee = Employee.create(params[:employee])
+    @current_employee = Employee.find(session[:user_id])
+    @current_company = @current_employee.company.id
+    @company = Company.find(@current_company)
+    @company.employees << @employee
   end
 
 end
