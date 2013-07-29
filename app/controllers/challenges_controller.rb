@@ -1,36 +1,35 @@
 class ChallengesController < ApplicationController
 
-   def index
+  def index
   end
 
   def show
-    @challenge = Challenge.find(params[:id])
+    @challenge = current_user.company.challenges.find(params[:id])
   end
 
   def edit
-    @challenge = Challenge.find(params[:id])    
+    @challenge = current_user.company.challenges.find(params[:id])
   end
 
   def update
-    @challenge = Challenge.find(params[:id])
+    @challenge = current_user.company.challenges.find(params[:id])
     @challenge.update_attributes(params[:challenge])
-    p @challenge
-    p "Hi*****"
   end
 
   def destroy
-    @challenge = Challenge.find(params[:id])
-    @challenge.destroy
+    challenge = current_user.company.challenges.find(params[:id])
+    challenge.destroy
   end
 
   def new
-    employee = Employee.find(session[:user_id])
-    @company = Company.find(employee.company.id)
+    @company = Company.find(current_user.company.id)
     @challenge = Challenge.new
   end
 
   def create
-    @challenge = Challenge.create(params[:challenge])
+    @challenge = Challenge.new(params[:challenge])
+    @challenge.author = current_user
+    current_user.company.challenges << @challenge
   end
 
 end

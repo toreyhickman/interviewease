@@ -1,6 +1,6 @@
 class Challenge < ActiveRecord::Base
   # Accessible attributes (not company_id or author_id)
-  attr_accessible :title, :description, :code, :test_code, :private
+  attr_accessible :title, :description, :code, :test_code, :public
 
   # Validations
   validates_presence_of :title
