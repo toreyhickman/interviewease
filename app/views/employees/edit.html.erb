@@ -1,17 +1,16 @@
+<small>:: Employees/<%= link_to "#{@employee.company.name}", @employee.company %>/<%= @employee.name %> EDIT</small>
+
 <h1>Edit Employee: <%= @employee.name %></h1>
 
-<%= link_to "Back To Employee's Homepage", @employee %><br><br>
-<%= link_to "Back To Company Homepage", @employee.company %><br><br>
+<%= link_to "Employee's Home", @employee %> | 
+<%= link_to "Company Home", @employee.company %><br><br>
 
 
 <%= form_for @employee, url: {action: "update"} do |f| %>
 
-  <%= f.label "Name: " %><br><br>
-  <%= f.text_field (:name) %><br><br> 
-  <%= f.label "Email Address: " %><br><br>
-  <%= f.text_field (:email) %><br><br>
-  <%= f.label "Enter New Password Here: " %><br><br>
-  <%= f.text_field (:password), value: "" %><br><br>
-  <%= f.submit "Submit" %><br><br>
+  <%= f.label "Name: " %> <%= f.text_field (:name) %><br><br> 
+  <%= f.label "Email Address: " %> <%= f.text_field (:email) %><br><br>
+  <%= f.label "Enter New Password Here: " %> <%= f.text_field (:password), value: "" %><br><br>
+  <%= f.submit "Edit Employee" %><br><br>
 
 <% end %>

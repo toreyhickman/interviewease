@@ -1,6 +1,10 @@
+<small>:: Challenges/<%= @challenge.company.name %>/<%= @challenge.title %></small>
+
 <h1><%= @challenge.title %></h1>
 
-<%= link_to "Back To Company Homepage", @challenge.company %><br><br>
+<p>Original Author: <%= @challenge.author.name %><br>
+
+Company: <%= link_to @challenge.company.name, @challenge.company %></p>
 
 <h2>Description</h2>
 <p><%= @challenge.description %></p>
@@ -11,8 +15,5 @@
 <h2>Test Code</h2>
 <p><%= @challenge.test_code %></p>
 
-<h2>Private?</h2>
-<p><%= @challenge.private %></p>
-
-<h2>Author</h2>
-<p><%= @challenge.author.name %></p>
+<h2>Public?</h2>
+<p><%= @challenge.public %></p>

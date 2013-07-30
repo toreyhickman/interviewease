@@ -1,1 +1,11 @@
+<small>:: <%= current_user.company.name %>/New Topic</small>
+
 <h1>New Topic</h1>
+
+<%= form_for @topic, url: {action: "create"} do |f| %>
+
+  <%= f.label "Name: " %><br><br>
+  <%= f.text_field (:name) %><br><br>
+  <%= f.submit "Add Topic" %><br><br>
+
+<% end %>

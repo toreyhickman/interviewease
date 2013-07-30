@@ -1,11 +1,10 @@
+<small>:: Employees/<%= link_to "#{@employee.company.name}", @employee.company %>/<%= @employee.name %></small>
+
 <h1><%= @employee.name ? @employee.name : @employee.email %></h1>
 
-<%= link_to "Go to #{@employee.company.name} homepage", @employee.company %><br><br>
-
-<ul>
-  <li><%= link_to "edit profile", edit_employee_path(@employee.id) %></li>
-  <li><%= link_to "delete account", @employee, method: :delete %></li>
-</ul>
+<% if current_user.id == @employee.id %>
+<%= link_to "edit profile", edit_employee_path(@employee.id) %> | <%= link_to "delete account", @employee, method: :delete %>
+<% end %>
 
 <h2>Scheduled Interviews</h2>
 <% @interviews.each do |interview| %>

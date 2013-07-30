@@ -1,47 +1,42 @@
-<h1>Show Company</h1>
-
-<h1><%= @company.name %></h1>
+<h1><%= @company.name %> Home</h1>
 
 <div id="employees">
-<h2>CRUD Employees</h2>
-<%= link_to "Add Employee", new_employee_path %>
-<ul>
+<h2>Employees
+[<%= link_to "+", new_employee_path %>]</h2>
+<table>
   <% @company.employees.each do |employee| %>
-  <h3><%= employee.name %></h3>
-  <li><%= link_to "View Employee", employee %></li>
-  <li><%= link_to "Edit Employee", edit_employee_path(employee.id) %></li>
-  <li><%= link_to "Delete Employee", employee, method: :delete %></li>
+  <tr>
+  <td><%= link_to employee.name, employee %></td>
+  </tr>
   <% end %>
-</ul>
+</table>
 
 </div>
 
 
+<div class="float:left;">
 <div id="challenges">
-<h2>CRUD Challenges</h2>
-<%= link_to "Add Challenge", new_challenge_path %>
-<ul>
+<h2>Challenges [<%= link_to "+", new_challenge_path %>]</h2>
+<table>
   <% @company.challenges.each do |challenge| %>
-  <h3><%= challenge.title %></h3>
-  <li><%= link_to "View Challenge", challenge %></li>
-  <li><%= link_to "Edit Challenge", edit_challenge_path(challenge.id) %></li>
-  <li><%= link_to "Delete Challenge", challenge, method: :delete %></li>
+  <tr>
+  <td><%= link_to challenge.title, challenge %></td>
+  <td><%= link_to "[e]", edit_challenge_path(challenge.id) %></td>
+  <td><%= link_to "[x]", challenge, method: :delete %></td></tr>
   <% end %>
-</ul>
+</table>
 
 </div>
 
 
 <div id="topics">
-<h2>CRUD Topics</h2>
-<%= link_to "Add Topic", new_topic_path %>
-<ul>
+<h2>Topics [<%= link_to "+", new_topic_path %>]</h2>
+<table>
   <% @company.topics.each do |topic| %>
-  <h3><%= topic.name %></h3>
-  <li><%= link_to "View Topic", topic %></li>
-  <li><%= link_to "Edit Topic", edit_topic_path(topic.id) %></li>
-  <li><%= link_to "Delete Topic", topic, method: :delete %></li>
+  <tr><td><%= topic.name %></td>
+  <td><%= link_to "[x]", topic, method: :delete %></td></tr>
   <% end %>
-</ul>
+</table>
 
+</div>
 </div>
