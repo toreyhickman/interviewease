@@ -1,23 +1,28 @@
 class CompaniesController < ApplicationController
+  before_filter :redirect_if_unauthenticated, only: :show
+  before_filter :redirect_if_unauthorized, only: :show
+
+  def show
+    @company = current_user.company
+  end
 
   def create
     @company = Company.new(name: params[:name])
-    @employee = Employee.new(params[:employee])
-    if @company.valid? && @employee.valid?
-      @company.save
-      @company.employees << @employee
+    @employee = @company.employees.build(params[:employee])
+    begin
+      Company.transaction do
+        @company.save
+        @employee.save
+      end
       session[:user_id] = @employee.id
       redirect_to @company
-    else
-      redirect_to new_session_path
+    rescue ActiveRecord::RecordInvalid
+      redirect_to root_url
     end
   end
 
-  def show
-    if current_user
-      @company = current_user.company
-    else
-      redirect_to :root
+  private
+    def redirect_if_unauthorized
+      redirect_to root_url if !current_user || Company.find(params[:id]) != current_user.company
     end
-  end
 end
