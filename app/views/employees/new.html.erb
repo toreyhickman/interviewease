@@ -1,13 +1,12 @@
+<small>:: <%= current_user.company.name %>/New Employee</small>
+
 <h1>New Employee</h1>
 
 <%= form_for @employee, url: {action: "create"} do |f| %>
 
-  <%= f.label "Name: " %><br><br>
-  <%= f.text_field (:name) %><br><br>  
-  <%= f.label "Email Address: " %><br><br>
-  <%= f.text_field (:email) %><br><br>
-  <%= f.label "Password: " %><br><br>
-  <%= f.text_field (:password), value: "" %><br><br>
-  <%= f.submit "Submit" %><br><br>
+  <%= f.label "Name: " %> <%= f.text_field (:name) %><br><br>  
+  <%= f.label "Email Address: " %> <%= f.text_field (:email) %><br><br>
+  <%= f.label "Password: " %> <%= f.text_field (:password), value: "" %><br><br>
+  <%= f.submit "Add Employee" %><br><br>
 
 <% end %>
