@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(:version => 20130727200811) do
     t.text     "description"
     t.text     "code"
     t.text     "test_code"
-    t.boolean  "private",     :default => true
+    t.boolean  "public",      :default => false
     t.integer  "company_id"
     t.integer  "author_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "companies", :force => true do |t|

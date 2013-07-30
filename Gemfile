@@ -29,6 +29,7 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
   gem 'faker'
+  gem 'quiet_assets'
 end
 
 group :test do

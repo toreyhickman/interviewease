@@ -14,7 +14,7 @@ class Interview < ActiveRecord::Base
   has_many :challenges, :through => :given_challenges
 
   # Callback functions
-  before_save :create_identifier
+  before_create :create_identifier
 
   # Methods
   def to_param
@@ -40,7 +40,6 @@ class Interview < ActiveRecord::Base
   end
 
   def create_identifier
-    self.identifier ||= random_string
+    self.identifier = random_string
   end
-
 end

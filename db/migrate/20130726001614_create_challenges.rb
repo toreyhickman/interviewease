@@ -5,7 +5,7 @@ class CreateChallenges < ActiveRecord::Migration
       t.text :description
       t.text :code
       t.text :test_code
-      t.boolean :private, default: true
+      t.boolean :public, default: false
       t.belongs_to :company
       t.integer :author_id
 

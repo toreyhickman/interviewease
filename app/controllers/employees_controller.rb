@@ -4,21 +4,21 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employee = Employee.find(params[:id])
+    @employee = current_user
   end
 
   def edit
-    @employee = Employee.find(params[:id])    
+    @employee = current_user    
   end
 
   def update
   end
 
   def destroy
-    @employee = Employee.find(params[:id])
+    @employee = current_user
     @employee.destroy
-    session[:user_id] = nil
-    redirect_to login
+    reset_session
+    redirect_to :root
   end
 
   def new
@@ -26,11 +26,16 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.create(params[:employee])
-    @current_employee = Employee.find(session[:user_id])
-    @current_company = @current_employee.company.id
-    @company = Company.find(@current_company)
-    @company.employees << @employee
+    if current_user
+      @employee = current_user.company.employees.build(params[:employee])
+      if @employee.save
+        redirect_to company_path(current_user.company)
+      else
+        render :new
+      end
+    else
+      redirect_to :root
+    end
   end
 
 end

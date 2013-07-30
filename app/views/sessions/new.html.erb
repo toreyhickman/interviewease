@@ -29,11 +29,9 @@
 
 <% end %>
 
-<!-- <h2>Check in for your interview.</h2>
- --><%#= form_tag ({controller: "interviews", action: "show"}) do %>
-
-  <%#= label_tag(:identifier, "Type in your interview code here.") %>
-
-  <%#= text_field_tag(:identifier) %>
-  <%#= submit_tag "Submit" %>
-<%# end %>
+<h2>Check in for your interview.</h2>
+<%= form_tag checkins_path do %>
+  <%= label_tag(:identifier, "Type in your interview code here.") %>
+  <%= text_field_tag(:identifier) %>
+  <%= submit_tag "Submit" %>
+<% end %>
