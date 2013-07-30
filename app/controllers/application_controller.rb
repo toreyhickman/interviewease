@@ -1,9 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # Application helper methods
-  helper_method :current_user, :login
-
+  helper_method :current_user, :login # Why is login a helper method???
 
   def current_user
     Employee.find_by_id(session[:user_id])
@@ -11,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   def scheduling_helper(interviewee)
     current_user.interviewees << interviewee
+  end
+
+  def redirect_if_unauthenticated
+    redirect_to new_session_path if !current_user
   end
 
 end

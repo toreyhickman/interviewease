@@ -39,10 +39,6 @@ class ChallengesController < ApplicationController
   end
 
   private
-
-    def redirect_if_unauthenticated
-      redirect_to new_session_path if !current_user
-    end
   
     def redirect_if_unauthorized
       redirect_to root_url if !current_user || Challenge.find(params[:id]).company != current_user.company
