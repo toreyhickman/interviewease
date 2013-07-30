@@ -1,68 +1,70 @@
-<h1>Interview</h1>
+<div id="interview_sidebar"></div>
 
-<select id="themechange" onchange="selectTheme()">
-  <option>default</option>
-  <option>3024-day</option>
-  <option>3024-night</option>
-  <option>ambiance</option>
-  <option>base16-dark</option>
-  <option>base16-light</option>
-  <option>blackboard</option>
-  <option>cobalt</option>  
-  <option>eclipse</option>
-  <option>elegant</option>
-  <option>erlang-dark</option>
-  <option>lesser-dark</option>
-  <option>midnight</option>
-  <option>monokai</option>
-  <option>neat</option>
-  <option>night</option>
-  <option>rubyblue</option>
-  <option>solarized dark</option>
-  <option>solarized light</option>
-  <option>tomorrow-night-eighties</option>
-  <option>twilight</option>
-  <option>vibrant-ink</option>
-  <option>xq-dark</option>
-  <option>xq-light</option>
-</select>
+<div id ="interview_challenge_wrapper">
+  <h1>Interview</h1>
 
-<div class="code" id="code">
+  <select id="themechange" onchange="selectTheme()">
+    <option>3024-day</option>
+    <option>3024-night</option>
+    <option>ambiance</option>
+    <option>base16-dark</option>
+    <option>base16-light</option>
+    <option>blackboard</option>
+    <option>cobalt</option>  
+    <option>eclipse</option>
+    <option>elegant</option>
+    <option>erlang-dark</option>
+    <option>lesser-dark</option>
+    <option>midnight</option>
+    <option>monokai</option>
+    <option>neat</option>
+    <option>night</option>
+    <option>rubyblue</option>
+    <option>solarized dark</option>
+    <option>solarized light</option>
+    <option>tomorrow-night-eighties</option>
+    <option>twilight</option>
+    <option>vibrant-ink</option>
+    <option>xq-dark</option>
+    <option>xq-light</option>
+  </select><br><br>
 
+  <div class="code" id="code"></div>
+
+  <a href="#" id="run_code">Run!</a>
+  <div id="code_results"></div>
 </div>
 
-<a href="#" id="run_code">Run!</a>
-<div id="code_results"></div>
+<div id="interview_video">
+  <style>
+    #remotes video {
+        height: 300px;
+    }
+  </style>
 
-<style>
-  #remotes video {
-      height: 300px;
-  }
-</style>
+  <video id="localVideo" style="height: 300px;"></video>
 
-<video id="localVideo" style="height: 300px;"></video>
-
-<!--
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="socket.io.js"></script>
-<script src="simplewebrtc.bundle.js"></script>
--->
+  <!--
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="socket.io.js"></script>
+  <script src="simplewebrtc.bundle.js"></script>
+  -->
 
 
-<script>
-    // grab the room from the URL
-    var room = "test"                   //location.search && location.search.split('?')[1];
+  <script>
+      // grab the room from the URL
+      var room = "test"                   //location.search && location.search.split('?')[1];
 
-    // create our webrtc connection
-    var webrtc = new SimpleWebRTC({
-        // the id/element dom element that will hold "our" video
-        localVideoEl: 'localVideo',
-        // the id/element dom element that will hold remote videos
-        remoteVideosEl: 'remotes',
-        // immediately ask for camera access
-        autoRequestMedia: true,
-        log: true
-    });
+      // create our webrtc connection
+      var webrtc = new SimpleWebRTC({
+          // the id/element dom element that will hold "our" video
+          localVideoEl: 'localVideo',
+          // the id/element dom element that will hold remote videos
+          remoteVideosEl: 'remotes',
+          // immediately ask for camera access
+          autoRequestMedia: true,
+          log: true
+      });
 
     // when it's ready, join if we got a room from the URL
     webrtc.on('readyToCall', function () {
@@ -70,4 +72,5 @@
         if (room) webrtc.joinRoom(room);
     });
     
-</script>
+  </script>
+</div>
