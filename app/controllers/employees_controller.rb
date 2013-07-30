@@ -5,6 +5,7 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = current_user
+    @interviews = current_user.interviews.includes(:candidate).where("complete = false")
   end
 
   def edit

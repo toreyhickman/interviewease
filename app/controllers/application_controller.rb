@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     Employee.find_by_id(session[:user_id])
   end
 
+  def scheduling_helper(interviewee)
+    current_user.interviewees << interviewee
+  end
+
 end

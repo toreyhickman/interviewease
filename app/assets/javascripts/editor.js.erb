@@ -1,79 +1,87 @@
-var code;
-var timeSinceLastKeypress = 0;
-
-function update_code(code)
-{
-  $.post('/api/update_code', { "code": code });
+function InterviewEditor() {
+  this.updates = [];
+  this.timeSinceLastKeypress = 0;
+  this.socket = new Pusher('<%= ENV['pusher_key'] %>');
+  this.channel = this.socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
+  this.code = CodeMirror(document.getElementById("code"), {
+    lineNumbers: true,
+    theme: "xq-light"
+  });
 }
 
-function selectTheme()
-{
-  previousCode = code.getValue();
+InterviewEditor.prototype.runCode = function() { 
+  toExec = this.code.getValue();
+  $.ajax({
+    url: '/api/run_code',
+    type: 'post',
+    data: { code: toExec },
+    success: function(response) {
+      $('#code_results').html(response.code);
+    },
+    error: function(response) {
+      $('#code_results').html("Something went wrong. Please try again.");
+    }
+  });
+}
+
+InterviewEditor.prototype.addCodeToQueue = function() {
+  this.timeSinceLastKeypress = 0;
+  this.updates.push(this.code.getValue());
+}
+
+InterviewEditor.prototype.updateView = function(data) {
+  if(this.timeSinceLastKeypress > 1) {
+    cursor = this.code.getCursor();
+    this.code.setValue(data);
+    this.code.setCursor(cursor);
+  }
+}
+
+InterviewEditor.prototype.incrementLastKeypress = function() {
+  this.timeSinceLastKeypress++;
+};
+
+InterviewEditor.prototype.updateCode = function() {
+  if(this.updates.length > 0) {
+    $.post('/api/update_code', { "code": this.updates.pop() });
+  }
+}
+
+InterviewEditor.prototype.selectTheme = function() {
+  previousCode = this.code.getValue();
   $('#code').html("");
-  code = CodeMirror(document.getElementById("code"),
-  {
+  this.code = CodeMirror(document.getElementById("code"), {
     lineNumbers: true,
     theme: $('#themechange').val(),
     value: previousCode
   });
 }
 
-$(document).ready(function()
-{
-  if($('div').hasClass('code'))
-  {
-    var updates = [];
-    var socket = new Pusher('<%= ENV['pusher_key'] %>');
-    var channel = socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
+$(document).ready(function() {
+  if($('div').hasClass('code')) {
+    var editor = new InterviewEditor();
 
-    setInterval(function()
-    {
-      timeSinceLastKeypress++;
+    setInterval(function() {
+      editor.updateCode();
+    }, 10);
+    setInterval(function() {
+      editor.incrementLastKeypress();
     }, 1000);
 
-    setInterval(function()
-    {
-      if(updates.length > 0)
-      {
-        update_code(updates.pop());
-      }
-    }, 10);
-
-    code = CodeMirror(document.getElementById("code"),
-    {
-      lineNumbers: true
+    $('#code').on('keyup', function() {
+      editor.addCodeToQueue();
     });
-
-    channel.bind('update_code', function(data)
-    {
-      if(timeSinceLastKeypress > 1)
-      {
-        cursor = code.getCursor();
-        code.setValue(data);
-        code.setCursor(cursor);
-      }
-    });
-
-    $('#code').on('keyup', function(e)
-    {
-      timeSinceLastKeypress = 0;
-      updates.push(code.getValue());
-    });
-
     $('#run_code').on('click', function(e) {
       e.preventDefault();
-      toExec = code.getValue();
-      $.ajax({
-        url: '/api/run_code',
-        type: 'post',
-        data: { code: toExec },
-        success: function(response) {
-          $('#code_results').html(response.code);
-        },
-        error: function(response) {
-          $('#code_results').html("Something went wrong. Please try again.");
-        }
-      });
+      editor.runCode();
+    });
+
+    selectTheme = function() {
+      editor.selectTheme();
+    }
+
+    editor.channel.bind('update_code', function(data) {
+      editor.updateView(data);
     });
   }
 });

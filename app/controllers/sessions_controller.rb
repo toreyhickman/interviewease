@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def new
-    @company = Company.new
+    if current_user
+      redirect_to current_user
+    else
+      @company = Company.new
+    end
   end
 
   def create
