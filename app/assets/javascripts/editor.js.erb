@@ -1,7 +1,7 @@
 function InterviewEditor() {
   this.updates = [];
   this.timeSinceLastKeypress = 0;
-  this.socket = new Pusher("<%= ENV['PUSHER_KEY'] %>");
+  this.socket = new Pusher("<%= Pusher.key %>");
   this.channel = this.socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
   this.code = CodeMirror(document.getElementById("code"), {
     lineNumbers: true,
