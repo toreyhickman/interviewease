@@ -1,6 +1,7 @@
 PairingRoulette::Application.routes.draw do
  
   root to: "sessions#new"
+
   resources :interviews
   resources :companies
   resources :employees
@@ -9,6 +10,7 @@ PairingRoulette::Application.routes.draw do
   resources :candidates
   resources :sessions
   resources :checkins
+  
   match '/interviews/:identifier', to: 'interviews#show'
   match '/api/update_code', to: 'api#update_code'
   match '/api/run_code', to: 'api#run_code'
