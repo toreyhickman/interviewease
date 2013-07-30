@@ -1,4 +1,4 @@
-  class CreateInterviews < ActiveRecord::Migration
+class CreateInterviews < ActiveRecord::Migration
   def change
     create_table :interviews do |t|
       t.belongs_to :employee
