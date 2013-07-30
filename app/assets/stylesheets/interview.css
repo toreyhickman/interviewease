@@ -22,7 +22,7 @@
   padding: 0;
 }
 
-#interview_sidebar_conadidate, #interview_sidebar_challenges {
+#interview_sidebar_conadidate, #interview_sidebar_challenges, #interview_sidebar_challenge_identifier {
   margin-bottom: 40px;
 }
 

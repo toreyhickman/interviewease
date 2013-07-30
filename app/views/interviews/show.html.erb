@@ -2,6 +2,11 @@
   <% if current_user %>
   <div id="interview_sidebar">
 
+    <div id="interview_sidebar_challenge_identifier">
+      <h3>Interview Code</h3>
+      <p id="interview_identifier"><%= @interview.identifier %></p>
+    </div>
+
     <div id="interview_sidebar_conadidate">
       <h3><%= @interview.candidate.name %></h3>
 
@@ -95,10 +100,13 @@
     <div class="local_video_wrapper right">
       <video id="local_video"></video>
     <div>
-    
-    <script>
+
+  </div>
+</div>
+
+<script>
         // grab the room from the URL
-        var room = "test_room"                   //location.search && location.search.split('?')[1];
+        var room = $('#interview_identifier').html()                  
 
         // create our webrtc connection
         var webrtc = new SimpleWebRTC({
@@ -118,5 +126,3 @@
       });
       
     </script>
-  </div>
-</div>
