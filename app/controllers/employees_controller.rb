@@ -13,6 +13,12 @@ class EmployeesController < ApplicationController
   end
 
   def update
+    @employee = current_user
+    if @employee.update_attributes(params[:employee])
+      redirect_to @employee
+    else
+      render :edit
+    end
   end
 
   def destroy
