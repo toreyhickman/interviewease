@@ -4,6 +4,6 @@ class InterviewsController < ApplicationController
   end
 
   def show
-    @interview = Interview.find_by_identifier(params[:identifier])
+    @interview = Interview.find_by_identifier(params[:id])
   end
 end
