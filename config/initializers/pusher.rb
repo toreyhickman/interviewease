@@ -1,5 +1,5 @@
 require 'pusher'
 
-Pusher.app_id = ENV['app_id']
-Pusher.key = ENV['key']
-Pusher.secret = ENV['secret']
+Pusher.app_id = ENV['APP_ID']
+Pusher.key = ENV['KEY']
+Pusher.secret = ENV['SECRET']

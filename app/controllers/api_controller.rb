@@ -11,13 +11,13 @@ class ApiController < ApplicationController
 
     File.open("public/test.rb", 'w') {|f| f.write(params[:code]) }
 
-    Net::SFTP.start(ENV['aws_host'], ENV['aws_user'], :password => ENV['aws_pass']) do |sftp|
+    Net::SFTP.start(ENV['AWS_HOST'], ENV['AWS_USER'], :password => ENV['AWS_PASS']) do |sftp|
       sftp.upload!("public/test.rb")
     end
 
     @code_result = ""
 
-    Net::SSH.start(ENV['aws_host'], ENV['aws_user'], :password => ENV['aws_pass']) do |session|
+    Net::SSH.start(ENV['AWS_HOST'], ENV['AWS_USER'], :password => ENV['AWS_PASS']) do |session|
       session.exec("ruby test.rb") do |ch, stream, data|
         @code_result += data
       end

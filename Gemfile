@@ -5,6 +5,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'bcrypt-ruby'
+gem 'faker'
 
 # Gems required for text editor:
 gem 'pusher'
@@ -28,8 +29,8 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
-  gem 'faker'
   gem 'quiet_assets'
+  gem 'factory_girl_rails'
 end
 
 group :test do

@@ -1,19 +1,22 @@
 class ChallengesController < ApplicationController
-  before_filter :challenge_owner?, :except => [:new, :create]
+  before_filter :redirect_if_unauthenticated, only: [:new, :create]
+  before_filter :redirect_if_unauthorized, except: [:new, :create]
 
   def show
     @challenge = current_user.company.challenges.find(params[:id])
   end
 
   def new
-    @company = Company.find(current_user.company.id)
     @challenge = Challenge.new
   end
 
   def create
-    @challenge = Challenge.new(params[:challenge])
-    @challenge.author = current_user
-    current_user.company.challenges << @challenge
+    @challenge = current_user.company.challenges.new(params[:challenge])
+    if @challenge.save
+      redirect_to @challenge
+    else
+      render :new
+    end
   end
 
   def edit
@@ -22,16 +25,26 @@ class ChallengesController < ApplicationController
 
   def update
     @challenge = current_user.company.challenges.find(params[:id])
-    @challenge.update_attributes(params[:challenge])
+    if @challenge.update_attributes(params[:challenge])
+      redirect_to @challenge
+    else
+      render :edit
+    end
   end
 
   def destroy
     challenge = current_user.company.challenges.find(params[:id])
     challenge.destroy
+    redirect_to company_path(challenge.company)
   end
 
   private
-    def challenge_owner?
+
+    def redirect_if_unauthenticated
+      redirect_to new_session_path if !current_user
+    end
+  
+    def redirect_if_unauthorized
       redirect_to root_url if !current_user || Challenge.find(params[:id]).company != current_user.company
     end
 end

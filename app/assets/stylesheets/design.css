@@ -1,12 +1,15 @@
-th {
-  text-align: left;
+.left {
+  float: left;
 }
 
-#editor {
-        position: absolute;
-        width: 500px;
-        height: 200px;
-    }
+.right {
+  float: right;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
 
 body {
   width: 1000px;

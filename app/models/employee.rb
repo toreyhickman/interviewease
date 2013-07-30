@@ -4,7 +4,7 @@ class Employee < ActiveRecord::Base
   include BCrypt
 
   # Accessible attributes
-  attr_accessible :email, :name, :password_hash, :password
+  attr_accessible :email, :name, :password_hash, :password # Perhaps remove :password_hash
 
   # Validations
   validates :name, presence: true

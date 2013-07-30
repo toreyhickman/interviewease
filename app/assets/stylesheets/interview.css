@@ -1,9 +1,33 @@
+#interview_show_wrapper {
+  width: 1000px;
+  height: 1000px;
+  overflow: hidden;
+}
+
+#interview_show_wrapper h3, #interview_show_wrapper h4 {
+  margin-bottom: 8px;
+}
+
 #interview_sidebar {
   float: left;
   width: 182px;
   padding: 8px;
-  min-height: 100%;
+  min-height: 600px;
   border: 1px solid black;
+  overflow: hidden;
+}
+
+#interview_sidebar p {
+  margin: 0 0 4px 0;
+  padding: 0;
+}
+
+#interview_sidebar_conadidate, #interview_sidebar_challenges, #interview_sidebar_challenge_identifier {
+  margin-bottom: 40px;
+}
+
+.candidate_section {
+  margin-bottom: 16px;
 }
 
 #interview_challenge_wrapper {
@@ -11,15 +35,68 @@
   width: 754px;
   padding: 8px;
   border: 1px solid black;
+  overflow: hidden;
+  margin-bottom: 16px;
 }
 
-#interview_video {
+#interview_editor_wrapper {
+  background-color: gray;
+  width: 400px;
+  float: left;
+}
+
+#interview_editor_buttons_wrapper {
+  width: 400px;
+  padding: 16px 0 0 0;
+}
+
+#code {
+  height: 400px;
+}
+
+#themechange {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#run_code {
+  float: right;
+}
+
+#interview_info_wrapper {
+  width: 330px;
+  background-color: gray;
+}
+
+.challenge_description_div_with_bottom_margin {
+  margin-bottom: 40px;
+}
+
+#interview_video_wrapper {
   float: right;
   padding: 8px;
   width: 754px;
   border: 1px solid black;
 }
 
-#code {
+.remote_video_wrapper {
+  overflow: hidden;
+  background-color: gray;
+  width: 400px;
   height: 300px;
+  text-align: center;
+}
+
+.local_video_wrapper {
+  overflow: hidden;
+  background-color: gray;
+  height: 300px;
+  width: 330px;
+  text-align: center
+}
+
+video {
+  height: 100%;
+  display: inline-block;
 }
