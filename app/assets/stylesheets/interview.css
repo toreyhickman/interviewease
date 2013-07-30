@@ -1,0 +1,25 @@
+#interview_sidebar {
+  float: left;
+  width: 182px;
+  padding: 8px;
+  min-height: 100%;
+  border: 1px solid black;
+}
+
+#interview_challenge_wrapper {
+  float: right;
+  width: 754px;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+#interview_video {
+  float: right;
+  padding: 8px;
+  width: 754px;
+  border: 1px solid black;
+}
+
+#code {
+  height: 300px;
+}
