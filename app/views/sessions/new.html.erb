@@ -2,9 +2,9 @@
 <h2>Employees: sign in here</h2>
 <%= form_tag ({controller: "sessions", action: "create"}) do %>
 
-<%= label_tag(:email, "Email: ") %><br><br>
+<%= label_tag(:email, "Email: ") %>
 <%= text_field_tag(:email) %><br><br>
-<%= label_tag(:password, "Password: ") %><br><br>
+<%= label_tag(:password, "Password: ") %>
 <%= text_field_tag(:password) %><br><br>
 <%= submit_tag "Submit" %><br><br>
 
@@ -14,7 +14,7 @@
 
 <%= form_tag ({controller: "companies", action: "create"}) do %>
 
-  <%= label_tag(:name, "Company Name: ") %><br><br>
+  <%= label_tag(:name, "Company Name: ") %>
   <%= text_field_tag(:name) %><br><br>
   <%= fields_for Employee.new do |employee| %>
     <%= employee.label(:name, "Enter your name.") %>
