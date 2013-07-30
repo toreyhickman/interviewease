@@ -14,7 +14,7 @@ describe Challenge do
     it { should allow_mass_assignment_of(:description) }
     it { should allow_mass_assignment_of(:code) }
     it { should allow_mass_assignment_of(:test_code) }
-    it { should allow_mass_assignment_of(:private) }
+    it { should allow_mass_assignment_of(:public) }
   end
 
   context "associations" do
