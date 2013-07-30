@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-  before_filter :challenge_owner?
+  before_filter :challenge_owner?, :except => [:new, :create]
 
   def show
     @challenge = current_user.company.challenges.find(params[:id])
