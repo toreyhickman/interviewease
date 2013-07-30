@@ -10,11 +10,7 @@
   <%= f.text_area (:code) %><br><br>
   <%= f.label "Test Code: " %><br><br>
   <%= f.text_area (:test_code) %><br><br>
-  <%= f.label "Public? " %><br><br>
-  <%= f.label :public_yes, "Yes" %>
-  <%= f.radio_button(:public, "Yes") %><br>
-  <%= f.label :public_no, "No" %>
-  <%= f.radio_button(:public, "No") %><br><br>
+  <%= f.label "Public? " %><%= f.check_box(:public) %><br>
   <%= f.submit "Submit" %><br><br>
 
 <% end %>
