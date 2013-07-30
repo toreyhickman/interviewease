@@ -4,7 +4,8 @@ function InterviewEditor() {
   this.socket = new Pusher('<%= ENV['pusher_key'] %>');
   this.channel = this.socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
   this.code = CodeMirror(document.getElementById("code"), {
-    lineNumbers: true
+    lineNumbers: true,
+    theme: "xq-light"
   });
 }
 
