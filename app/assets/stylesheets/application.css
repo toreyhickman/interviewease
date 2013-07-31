@@ -6,7 +6,6 @@ body {
 
 .logotype {
   font-size: 36px;
-  /* temp */
   color: #ccc;
   float: left;
 }
@@ -111,8 +110,8 @@ input {
   width: 800px;
   margin: 0 auto;
   line-height: 32px;
-  -moz-column-count:2; /* Firefox */
-  -webkit-column-count:2; /* Safari and Chrome */
+  -moz-column-count:2;
+  -webkit-column-count:2;
   column-count:2;
 }
 
@@ -131,7 +130,65 @@ footer {
   font-size: 14px;
   text-align: center;
   padding: 20px 0;
+}
 
-/*  position:absolute;
-  bottom:0px;*/
+.main_emp {
+  width: 100%;
+  margin: 0 auto;
+  float:left;
+}
+
+.show_employee {
+  float:left;
+  width: 200px;
+  background-color: #242424;
+  padding: 60px 40px 200px 40px;
+}
+
+.show_employee a,
+.show_employee a:active,
+.show_employee a:visited
+{
+  color: #fff;
+  text-decoration: none;
+}
+
+.show_employee h1 {
+  color: #00db33;
+}
+
+.show_interview {
+  float: left;
+}
+
+.show_emp_interviews {
+  float: left;
+  width: 400px;
+  padding: 30px 10px 70px 30px;
+}
+
+#interview_sidebar {
+  width: 200px;
+  border: 1px #000 solid;
+  background-color: #242424;
+  color: #fff;
+  padding: 60px 40px 20px 40px;
+}
+
+#interview_sidebar h2 {
+  color: #00db33;
+}
+
+#interview_show_wrapper {
+  float: left;
+  xwidth: 400px !important;
+}
+
+#interview_challenge_wrapper {
+  float: left;
+}
+
+#interview_video_wrapper {
+  background-color: #111;
+  float:left;
 }

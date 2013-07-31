@@ -11,7 +11,6 @@
 <% end %>
 </div><!-- end interview -->
 
-
 <div id="container">
 
 <div class="register">
@@ -27,8 +26,8 @@
     <%= employee.text_field(:name) %><br><br>
     <%= employee.label(:email, "Email: ") %>
     <%= employee.text_field(:email) %><br><br>
-    <%= employee.label(:password, "Password: ") %>
-    <%= employee.text_field(:password) %><br><br>
+    <%= employee.label(:password, "Enter your password.") %>
+    <%= employee.password_field(:password) %><br><br>
   <% end %>
   
   <%= submit_tag "Submit" %><br><br>

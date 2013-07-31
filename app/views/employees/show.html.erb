@@ -1,4 +1,7 @@
-<small>:: Employees/<%= link_to "#{@employee.company.name}", @employee.company %>/<%= @employee.name %></small>
+
+<div class="main_emp">
+<div class="show_employee">
+
 
 <h1><%= @employee.name ? @employee.name : @employee.email %></h1>
 
@@ -6,7 +9,13 @@
 <%= link_to "edit profile", edit_employee_path(@employee.id) %> | <%= link_to "delete account", @employee, method: :delete %>
 <% end %>
 
-<h2>Scheduled Interviews</h2>
+</div><!-- show_employee -->
+
+
+<div class="show_emp_interviews">
+<small>:: Employees/<%= link_to "#{@employee.company.name}", @employee.company %>/<%= @employee.name %></small>
+
+<h1>Interviews</h1>
 <% @interviews.each do |interview| %>
   <p><%= link_to interview.candidate.name, interview %></p>
   <p>
@@ -18,7 +27,7 @@
   </p>
 <% end %>
 
-<h2>Create New Interview</h2>
+<h2>New Interview</h2>
 <%= form_for Candidate.new do |f| %>
   <%= f.label(:name, "Who will you be interviewing?") %>
   <%= f.text_field :name %>
@@ -28,3 +37,6 @@
   <br>
   <%= f.submit %>
 <% end %>
+</div><!-- show_emp_interviews -->
+
+</div><!-- show_main_emp -->
