@@ -7,6 +7,14 @@ class CompaniesController < ApplicationController
   end
 
   def create
+    if params[:name].empty?
+      flash[:error] = "Company name must not be blank."
+      redirect_to root_path and return
+    end
+    if params[:employee][:name].empty? || params[:employee][:email].empty? || params[:employee][:password].empty?
+      flash[:error] = "Employee fields must not be blank."
+      redirect_to root_path and return
+    end
     @company = Company.new(name: params[:name])
     @employee = @company.employees.build(params[:employee])
     begin
