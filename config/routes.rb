@@ -18,4 +18,5 @@ PairingRoulette::Application.routes.draw do
   match '/login', to: 'sessions#create'
   match '/logout', to: 'sessions#destroy', via: [:delete]
   match '/signup', to: 'companies#signup'
+  match '/interview/mark_complete', to: 'interviews#mark_complete'
 end

@@ -11,12 +11,6 @@ class GivenChallengesController < ApplicationController
       given_challenge.interview_id = params[:interview_id]
       given_challenge.save
 
-      puts
-      puts
-      puts given_challenge.inspect
-      puts
-      puts
-
       format.json do
         render :json => { :challenge => @challenge }
       end

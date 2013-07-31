@@ -22,7 +22,12 @@
   overflow: hidden;
 }
 
-#interview_sidebar p, #interview_sidebar span {
+#interview_sidebar p {
+  margin: 0 0 4px 0;
+  padding: 0;
+}
+
+#interview_sidebar span {
   display: inline-block;
   margin: 0 0 4px 0;
   padding: 0;
@@ -43,6 +48,10 @@
   border: 1px solid black;
   overflow: hidden;
   margin-bottom: 16px;
+}
+
+#interview_sidebar_end_challenge {
+
 }
 
 #interview_editor_wrapper {
