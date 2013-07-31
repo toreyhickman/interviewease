@@ -1,3 +1,8 @@
+.clickable:hover {
+  cursor: pointer;
+  color: orange;
+}
+
 #interview_show_wrapper {
   width: 1000px;
   height: 1000px;
@@ -17,7 +22,8 @@
   overflow: hidden;
 }
 
-#interview_sidebar p {
+#interview_sidebar p, #interview_sidebar span {
+  display: inline-block;
   margin: 0 0 4px 0;
   padding: 0;
 }
