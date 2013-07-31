@@ -1,8 +1,9 @@
-function InterviewEditor() {
+function InterviewEditor(channelName) {
+  this.channelName = channelName;
   this.updates = [];
   this.timeSinceLastKeypress = 0;
   this.socket = new Pusher("dc3a0120fb5d89efbd26");
-  this.channel = this.socket.subscribe('test'); // THIS SHOULD BE THE PAGE URL
+  this.channel = this.socket.subscribe(this.channelName);
   this.code = CodeMirror(document.getElementById("code"), {
     lineNumbers: true,
     theme: "xq-light"
@@ -14,14 +15,12 @@ InterviewEditor.prototype.runCode = function() {
   $.ajax({
     url: '/api/run_code',
     type: 'post',
-    data: { code: toExec },
-    success: function(response) {
-      $('#code_results').html(response.code);
-    },
-    error: function(response) {
-      $('#code_results').html("Something went wrong. Please try again.");
-    }
+    data: { code: toExec, channel: this.channelName }
   });
+}
+
+InterviewEditor.prototype.displayCodeResults = function(data) {
+  $('#code_results').html(data);
 }
 
 InterviewEditor.prototype.addCodeToQueue = function() {
@@ -37,14 +36,28 @@ InterviewEditor.prototype.updateView = function(data) {
   }
 }
 
+InterviewEditor.prototype.updateChallengeView = function(data) {
+  $('h1').html(data['title']);
+  $('#interview_challenge_description').html(data['description']);
+  $('#interview_test_code').html(data['test_code']);
+  cursor = this.code.getCursor();
+  this.code.setValue(data['code']);
+  this.code.setCursor(cursor);
+}
+
 InterviewEditor.prototype.incrementLastKeypress = function() {
   this.timeSinceLastKeypress++;
 };
 
 InterviewEditor.prototype.updateCode = function() {
   if(this.updates.length > 0) {
-    $.post('/api/update_code', { "code": this.updates.pop() });
+    var data = 
+    $.post('/api/update_code', { code: this.updates.pop(), channel: this.channelName });
   }
+}
+
+InterviewEditor.prototype.updateChallenge = function(challengeId) {
+  $.post('/api/update_challenge', { challenge_id: challengeId, channel: this.channelName });
 }
 
 InterviewEditor.prototype.selectTheme = function() {
@@ -59,11 +72,12 @@ InterviewEditor.prototype.selectTheme = function() {
 
 $(document).ready(function() {
   if($('div').hasClass('code')) {
-    var editor = new InterviewEditor();
+    var editor = new InterviewEditor($('#interview_identifier').html());
 
     setInterval(function() {
       editor.updateCode();
     }, 10);
+
     setInterval(function() {
       editor.incrementLastKeypress();
     }, 1000);
@@ -71,6 +85,11 @@ $(document).ready(function() {
     $('#code').on('keyup', function() {
       editor.addCodeToQueue();
     });
+
+    $('.clickable').on('click', function() {
+      editor.updateChallenge($(this).data().challengeid);
+    });
+
     $('#run_code').on('click', function(e) {
       e.preventDefault();
       editor.runCode();
@@ -82,6 +101,14 @@ $(document).ready(function() {
 
     editor.channel.bind('update_code', function(data) {
       editor.updateView(data);
+    });
+
+    editor.channel.bind('update_challenge', function(data) {
+      editor.updateChallengeView(data);
+    });
+
+    editor.channel.bind('update_result', function(data) {
+      editor.displayCodeResults(data);
     });
   }
 });
