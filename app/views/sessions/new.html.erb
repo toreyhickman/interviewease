@@ -6,7 +6,7 @@
 <%= text_field_tag(:email) %><br><br>
 <%= label_tag(:password, "Password: ") %>
 <%= password_field_tag(:password) %><br><br>
-<%= submit_tag "Submit" %><br><br>
+<%= submit_tag "Sign In" %><br><br>
 
 <% end %>
 <p>-----------</p>
@@ -25,7 +25,7 @@
     <%= employee.password_field(:password) %><br><br>
   <% end %>
   
-  <%= submit_tag "Submit" %><br><br>
+  <%= submit_tag "Register" %><br><br>
 
 <% end %>
 
@@ -33,5 +33,5 @@
 <%= form_tag checkins_path do %>
   <%= label_tag(:identifier, "Type in your interview code here.") %>
   <%= text_field_tag(:identifier) %>
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Check In" %>
 <% end %>
