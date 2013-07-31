@@ -8,6 +8,7 @@ class TopicsController < ApplicationController
 	def create
 	  @topic = Topic.new(params[:topic])
 	  current_user.company.topics << @topic
+    redirect_to current_user.company
 	end
 
 end
