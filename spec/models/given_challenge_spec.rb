@@ -3,6 +3,7 @@ require 'spec_helper'
 describe GivenChallenge do
 
   context "validations" do
+    it { should validate_uniqueness_of(:challenge_id).scoped_to(:interview_id) }
   end
 
   context "accessible attributes" do
