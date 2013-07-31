@@ -1,10 +1,15 @@
-<div id="interview_show_wrapper">
+<div id="interview_show_wrapper" 
+  data-identifier=<%= @interview.identifier %>
+  data-interviewid=<%= @interview.id %>
+  data-candidateid=<%= @interview.candidate.id %>
+>
   <% if current_user %>
   <div id="interview_sidebar">
 
     <div id="interview_sidebar_challenge_identifier">
       <h3>Interview Code</h3>
       <p id="interview_identifier"><%= @interview.identifier %></p>
+      <p><small>give this code to the candidate</small></p>
     </div>
 
     <div id="interview_sidebar_conadidate">
@@ -36,15 +41,15 @@
 
       <h4><%= current_user.company.name.capitalize %></h4>
         <% current_user.company.challenges.each do |ch| %>
-          <p><%= ch.title %><p>
+          <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span><br>
         <% end %>
       <h4>Public</h4>
         <% Challenge.where("public = true").each do |ch| %>
-          <p><%= ch.title %><p>
+          <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span><br>
         <% end %>
     </div>
 
-    <div id="interview_sidebar_end_challenge">
+    <div id="interview_sidebar_end_challenge" class="clickable">
       End Interview
     </div>
 
@@ -73,14 +78,14 @@
       <div>
         <h3>Challenge Description</h3>
         <div id="interview_challenge_description" class="challenge_description_div_with_bottom_margin">
-          "After a challenge is chosen, its description will be displayed."
+          After a challenge is chosen, its description will be displayed.
         </div>
       </div>
 
       <div>
         <h3>Make These Tests Pass</h3>
         <div id="interview_test_code" class="challenge_description_div_with_bottom_margin">
-          "The test code will appear here."
+          The test code will appear here.
         </div>
       </div>
 
@@ -106,7 +111,7 @@
 
 <script>
         // grab the room from the URL
-        var room = $('#interview_identifier').html()                  
+        var room = $('#interview_show_wrapper').data().identifier                 
 
         // create our webrtc connection
         var webrtc = new SimpleWebRTC({
