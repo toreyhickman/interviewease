@@ -21,20 +21,4 @@ $(document).ready(function() {
 
     });
   });
-
-
-  $('#interview_sidebar').on('click', '#interview_sidebar_end_challenge', function() {
-
-    var interviewId = { interview_id: $('#interview_show_wrapper').data().interviewid };
-
-    $.ajax({
-      url: "/interview/mark_complete",
-      type: "POST",
-      data: interviewId,
-      dataType: "JSON",
-    }).done(function(data){
-      window.location = data.url;
-    });
-
-  });
 });

@@ -13,7 +13,7 @@ function SimpleWebRTC(opts) {
     var options = opts || {};
     var config = this.config = {
             //url: 'http://localhost:8888',
-            url: 'http://192.168.1.22:8888',
+            url: 'http://young-tundra-9116.herokuapp.com',
             log: options.log,
             localVideoEl: '',
             remoteVideosEl: '',

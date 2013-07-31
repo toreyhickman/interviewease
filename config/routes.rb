@@ -2,7 +2,10 @@ PairingRoulette::Application.routes.draw do
  
   root to: "sessions#new"
 
-  resources :interviews
+  resources :interviews do
+    resource :feedback
+  end
+  
   resources :companies
   resources :employees
   resources :challenges
