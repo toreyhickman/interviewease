@@ -1,0 +1,33 @@
+<h1>Feedback</h1>
+
+<%= @interview.candidate.name %>
+
+<br>
+
+<div id="feedback_questions_wrapper">
+
+
+
+  <%= form_tag interview_feedback_path(@interview) do %>
+    <%= hidden_field_tag 'candidate_id', :value => @interview.candidate.id %>
+    <%#= hidden_field_tag 'interview_id', :value => @interview.id %>
+
+    <% @questions.each do |q| %>
+
+      <p><%= q.prompt %></p>
+      <%= hidden_field_tag 'response[][question_id]', :value => q.id %>
+      <%= text_area_tag    'response[][response]' %>
+
+    <% end %>
+
+    <br>
+
+    <%= radio_button_tag(:recommend, true) %> Yes
+    <br>
+    <%= radio_button_tag(:recommend, false) %> No
+    <br>
+    <%= submit_tag "Submit Feedback" %>
+
+  <% end %>
+
+</div>

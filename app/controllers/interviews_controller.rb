@@ -14,25 +14,15 @@ class InterviewsController < ApplicationController
   def update
     @interview = find_interview
     if @interview.update_attributes(params[:interview])
-      redirect_to current_user
+      redirect_to new_interview_feedback_path(@interview)
     else
       flash[:notice] = "Something went wrong with saving the interview as complete."
       redirect_to current_user
     end
   end
 
-  # def mark_complete
+  def new_interview_feedack
+    @interview = Interview.last
+  end
 
-  #   respond_to do |format|
-  #     format.json do
-      
-  #       interview = Interview.find(params[:interview_id])
-  #       interview.complete = true
-  #       interview.save
-
-  #       render :json => { :url => employee_url(current_user) }
-
-  #     end
-  #   end
-  # end
 end
