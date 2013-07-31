@@ -51,7 +51,6 @@ InterviewEditor.prototype.incrementLastKeypress = function() {
 
 InterviewEditor.prototype.updateCode = function() {
   if(this.updates.length > 0) {
-    var data = 
     $.post('/api/update_code', { code: this.updates.pop(), channel: this.channelName });
   }
 }
@@ -72,7 +71,7 @@ InterviewEditor.prototype.selectTheme = function() {
 
 $(document).ready(function() {
   if($('div').hasClass('code')) {
-    var editor = new InterviewEditor($('#interview_identifier').html());
+    var editor = new InterviewEditor($('#interview_show_wrapper').data('identifier'));
 
     setInterval(function() {
       editor.updateCode();
@@ -87,7 +86,7 @@ $(document).ready(function() {
     });
 
     $('.clickable').on('click', function() {
-      editor.updateChallenge($(this).data().challengeid);
+      editor.updateChallenge($(this).data('challengeid'));
     });
 
     $('#run_code').on('click', function(e) {
