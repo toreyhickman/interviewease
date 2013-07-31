@@ -5,7 +5,7 @@
 <%= label_tag(:email, "Email: ") %>
 <%= text_field_tag(:email) %><br><br>
 <%= label_tag(:password, "Password: ") %>
-<%= text_field_tag(:password) %><br><br>
+<%= password_field_tag(:password) %><br><br>
 <%= submit_tag "Submit" %><br><br>
 
 <% end %>
@@ -22,7 +22,7 @@
     <%= employee.label(:email, "Enter your email.") %>
     <%= employee.text_field(:email) %><br><br>
     <%= employee.label(:password, "Enter your password.") %>
-    <%= employee.text_field(:password) %><br><br>
+    <%= employee.password_field(:password) %><br><br>
   <% end %>
   
   <%= submit_tag "Submit" %><br><br>
