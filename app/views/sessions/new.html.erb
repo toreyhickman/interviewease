@@ -1,5 +1,45 @@
+<div class="interview">
+<h2>Check in for your interview.</h2>
+<%= form_tag checkins_path do %>
+  <%= label_tag(:identifier, "Interview code: ") %>
+  <%= text_field_tag(:identifier) %>
+  <%= submit_tag "Submit" %>
+<% end %>
 
-<h2>Employees: sign in here</h2>
+<% if flash[:error] %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
+</div><!-- end interview -->
+
+
+<div id="container">
+
+<div class="register">
+
+<h2>Register (Change to Modal)</h2>
+
+<%= form_tag ({controller: "companies", action: "create"}) do %>
+
+  <%= label_tag(:name, "Company Name: ") %>
+  <%= text_field_tag(:name) %><br><br>
+  <%= fields_for Employee.new do |employee| %>
+    <%= employee.label(:name, "Name: ") %>
+    <%= employee.text_field(:name) %><br><br>
+    <%= employee.label(:email, "Email: ") %>
+    <%= employee.text_field(:email) %><br><br>
+    <%= employee.label(:password, "Password: ") %>
+    <%= employee.text_field(:password) %><br><br>
+  <% end %>
+  
+  <%= submit_tag "Submit" %><br><br>
+
+<% end %>
+
+</div><!-- end register -->
+
+
+<div class="signin">
+<h2>Employee Login (modal)</h2>
 <%= form_tag ({controller: "sessions", action: "create"}) do %>
 
 <%= label_tag(:email, "Email: ") %>
@@ -9,29 +49,17 @@
 <%= submit_tag "Submit" %><br><br>
 
 <% end %>
-<p>-----------</p>
-<h2>Register your company here:</h2>
+</div><!-- end signin -->
 
-<%= form_tag ({controller: "companies", action: "create"}) do %>
 
-  <%= label_tag(:name, "Company Name: ") %>
-  <%= text_field_tag(:name) %><br><br>
-  <%= fields_for Employee.new do |employee| %>
-    <%= employee.label(:name, "Enter your name.") %>
-    <%= employee.text_field(:name) %><br><br>
-    <%= employee.label(:email, "Enter your email.") %>
-    <%= employee.text_field(:email) %><br><br>
-    <%= employee.label(:password, "Enter your password.") %>
-    <%= employee.text_field(:password) %><br><br>
-  <% end %>
-  
-  <%= submit_tag "Submit" %><br><br>
+</div><!-- end container -->
 
-<% end %>
+<div class="ad ad1">
+  <h2>Real-Time Pairing Made Easy</h2>
+  <p>Mathematics was occurs concept occurs mathematics. Occurs pairing here concept. Concept treated concept mathematics mathematics occurs. Occurs had occurs occurs concept. Concept was mathematics occurs here. Here treated mathematics mathematics mathematics. Here pairing here occurs occurs. Here was occurs mathematics mathematics. Concept were occurs concept here.</p>
+</div>
 
-<h2>Check in for your interview.</h2>
-<%= form_tag checkins_path do %>
-  <%= label_tag(:identifier, "Type in your interview code here.") %>
-  <%= text_field_tag(:identifier) %>
-  <%= submit_tag "Submit" %>
-<% end %>
+<div class="ad ad2">
+  <h2>Another Reason to Use This Thing</h2>
+  <p>Communication standardized type code text. Song sending text fragment written. Text formed type segment electronic. Text computing fragment horror song. Concept were text text. Mann standardized particular computer display verse. Code were text another code computer. Song computing another text. Computer were file concept work.</p>
+</div>
