@@ -23,18 +23,28 @@ $(document).ready(function() {
   });
 
 
-  $('#interview_sidebar').on('click', '#interview_sidebar_end_challenge', function() {
+//   $('#interview_sidebar').on('click', '#interview_sidebar_end_challenge', function() {
 
-    var interviewId = { interview_id: $('#interview_show_wrapper').data().interviewid };
+//     var interviewId = { interview_id: $('#interview_show_wrapper').data().interviewid };
 
-    $.ajax({
-      url: "/interview/mark_complete",
-      type: "POST",
-      data: interviewId,
-      dataType: "JSON",
-    }).done(function(data){
-      window.location = data.url;
-    });
+//     $.ajax({
+//       url: "/interview/mark_complete",
+//       type: "POST",
+//       data: interviewId,
+//       dataType: "JSON",
+//     }).done(function(data){
+//       window.location = data.url;
+//     });
 
-  });
+//   });
+// });
+
+
+// if @interview.save
+//   redirect_to feedback_path(:interview_id => @interview.id)
+//   /feedback?interview_id=23
+  
+//   new_interview_feedback_path(@interview)
+//   /interviews/23/feedback/new
+
 });

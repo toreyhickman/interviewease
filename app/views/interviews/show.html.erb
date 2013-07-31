@@ -50,7 +50,10 @@
     </div>
 
     <div id="interview_sidebar_end_challenge" class="clickable">
-      End Interview
+      <%= form_for @interview do |f| %>
+        <%= f.hidden_field :complete, :value => true %>
+        <%= f.submit "End Interview" %>
+      <% end %>
     </div>
 
 
