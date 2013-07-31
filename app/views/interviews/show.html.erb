@@ -1,4 +1,8 @@
-<div id="interview_show_wrapper" data-identifier=<%= @interview.identifier %>>
+<div id="interview_show_wrapper" 
+  data-identifier=<%= @interview.identifier %>
+  data-interviewid=<%= @interview.id %>
+  data-candidateid=<%= @interview.candidate.id %>
+>
   <% if current_user %>
   <div id="interview_sidebar">
 
@@ -37,11 +41,11 @@
 
       <h4><%= current_user.company.name.capitalize %></h4>
         <% current_user.company.challenges.each do |ch| %>
-          <span data-challengeId="<%= ch.id %>" class="clickable"><%= ch.title %></span>
+          <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span>
         <% end %>
       <h4>Public</h4>
         <% Challenge.where("public = true").each do |ch| %>
-          <span data-challenge-id="<%= ch.id %>" class="clickable"><%= ch.title %></span>
+          <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span>
         <% end %>
     </div>
 
@@ -74,14 +78,14 @@
       <div>
         <h3>Challenge Description</h3>
         <div id="interview_challenge_description" class="challenge_description_div_with_bottom_margin">
-          "After a challenge is chosen, its description will be displayed."
+          After a challenge is chosen, its description will be displayed.
         </div>
       </div>
 
       <div>
         <h3>Make These Tests Pass</h3>
         <div id="interview_test_code" class="challenge_description_div_with_bottom_margin">
-          "The test code will appear here."
+          The test code will appear here.
         </div>
       </div>
 
