@@ -7,13 +7,13 @@
   <div id="interview_sidebar">
 
     <div id="interview_sidebar_challenge_identifier">
-      <h3>Interview Code</h3>
+      <h2>Interview Code</h2>
       <p id="interview_identifier"><%= @interview.identifier %></p>
       <p><small>give this code to the candidate</small></p>
     </div>
 
     <div id="interview_sidebar_conadidate">
-      <h3><%= @interview.candidate.name %></h3>
+      <h2><%= @interview.candidate.name %></h2>
 
       <div class="candidate_section">
         <h4>Challenges Attempted</h4>
@@ -37,7 +37,7 @@
     </div>
 
     <div id="interview_sidebar_challenges">
-      <h3>Challenges</h3>
+      <h2>Challenges</h2>
 
       <h4><%= current_user.company.name.capitalize %></h4>
         <% current_user.company.challenges.each do |ch| %>
@@ -76,21 +76,21 @@
     <div id="interview_info_wrapper" class="right">
 
       <div>
-        <h3>Challenge Description</h3>
+        <h2>Challenge Description</h2>
         <div id="interview_challenge_description" class="challenge_description_div_with_bottom_margin">
           After a challenge is chosen, its description will be displayed.
         </div>
       </div>
 
       <div>
-        <h3>Make These Tests Pass</h3>
+        <h2>Make These Tests Pass</h2>
         <div id="interview_test_code" class="challenge_description_div_with_bottom_margin">
           The test code will appear here.
         </div>
       </div>
 
       <div>
-        <h3>Results</h3>
+        <h2>Results</h2>
         <div id="code_results"></div>
       </div>
     </div>
@@ -131,3 +131,6 @@
       });
       
     </script>
+<footer>
+&copy;2013 (Name) | Torey Hickman / Andrew McGregor / Rick Thomas / Patrick Villanueva
+</footer>
