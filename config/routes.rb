@@ -17,6 +17,7 @@ PairingRoulette::Application.routes.draw do
   
   match '/interviews/:identifier', to: 'interviews#show'
   match '/api/update_code', to: 'api#update_code'
+  match '/api/update_challenge', to: 'api#update_challenge'
   match '/api/run_code', to: 'api#run_code'
   match '/login', to: 'sessions#create'
   match '/logout', to: 'sessions#destroy', via: [:delete]

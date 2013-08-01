@@ -1,13 +1,19 @@
 class ApiController < ApplicationController
   def update_code
-    # NEED TO ADD CHANNEL DIFFERENTIATION ONCE URL STRUCTURE IMPLEMENTED
-    Pusher["test"].trigger_async('update_code', params[:code])
-    render :text => "updated"
+    Pusher[params[:channel]].trigger_async('update_code', params[:code])
+    render :text => "code updated"
+  end
+
+  def update_challenge
+    challenge = Challenge.find(params[:challenge_id])
+    Pusher[params[:channel]].trigger_async('update_challenge', challenge)
+    GivenChallenge.create(challenge_id: challenge.id, candidate_id: params[:candidate_id], interview_id: params[:interview_id])
+    render :text => "challenge updated"
   end
 
   def run_code
     # LOOK INTO CREATING FILE ON SERVER ITSELF
-    # MAKE INTO BACKGROUND TASK
+    # MAYBE MAKE INTO BACKGROUND TASK
 
     File.open("public/test.rb", 'w') {|f| f.write(params[:code]) }
 
@@ -23,6 +29,8 @@ class ApiController < ApplicationController
       end
     end
 
-    render :json => { :code => @code_result }
+    Pusher[params[:channel]].trigger_async('update_result', @code_result)
+
+    render :text => "result updated"
   end
 end
