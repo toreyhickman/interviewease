@@ -13,5 +13,4 @@ class Challenge < ActiveRecord::Base
   has_many :given_challenges
   has_many :attempters, :through => :given_challenges, :source => :candidate
   has_many :feedback_questions, as: :question
-
 end
