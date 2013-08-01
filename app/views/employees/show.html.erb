@@ -1,10 +1,17 @@
 <div class="main_container">
 
-  <div class="heading">
+  <div class="page_heading">
     <h1><%= @employee.name ? @employee.name : @employee.email %></h1>
     <% if current_user.id == @employee.id %>
     <%= link_to "edit", edit_employee_path(@employee.id) %> <%= link_to "delete", @employee, method: :delete %>
     <% end %>
+  </div>
+
+  <div class="sidebar">
+    <h2>My Interviews</h2>
+      <% @interviews.each do |interview| %>
+        <p><%= link_to interview.candidate.name, interview %></p>
+      <% end %>
   </div>
 
   <div class="centering_wrapper employee_show">
@@ -15,19 +22,18 @@
           <%= f.label(:name, "Candidate name") %>
           <%= f.text_field :name %>
           <br>
-          <%= f.label(:email, "Candidate email") %>
-          <%= f.text_field :email %>
-          <br>
-          <%= f.submit %>
+          <%#= f.label(:email, "Candidate email") %>
+          <%#= f.text_field :email %>
+          <!-- <br> -->
+          <%= f.submit "Add"%>
         <% end %>
       </div>
     </div>
-
-    <div class="module left center">
-      <h2>Scheduled Interviews</h2>
-      <% @interviews.each do |interview| %>
-        <p><%= link_to interview.candidate.name, interview %></p>
-      <% end %>
-    </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('#candidate_name').focus();
+  });
+</script>

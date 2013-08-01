@@ -1,12 +1,24 @@
-<small>:: <%= current_user.company.name %>/New Employee</small>
+<div class="page_heading">
+  <h1><%= current_user.company.name %></h1>
+</div>
 
-<h1>New Employee</h1>
+<div class="centering_wrapper employee_new">
+  <div class="form_wrap">
+    <h2 class="center">Enter Employee Info</h2>
+    <%= form_for @employee, url: {action: "create"} do |f| %>
+      <%= f.label "Name" %>
+      <%= f.text_field (:name) %><br>
+      <%= f.label "Email" %>
+      <%= f.text_field (:email) %><br>
+      <%= f.label "Password" %>
+      <%= f.text_field (:password), value: "" %><br>
+      <%= f.submit "Add Employee" %>
+    <% end %>
+  </div>
+</div>
 
-<%= form_for @employee, url: {action: "create"} do |f| %>
-
-  <%= f.label "Name: " %> <%= f.text_field (:name) %><br><br>  
-  <%= f.label "Email Address: " %> <%= f.text_field (:email) %><br><br>
-  <%= f.label "Password: " %> <%= f.password_field (:password), value: "" %><br><br>
-  <%= f.submit "Add Employee" %><br><br>
-
-<% end %>
+<script>
+  $(document).ready(function() {
+    $('#employee_name').focus();
+  });
+</script>

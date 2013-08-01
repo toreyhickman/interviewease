@@ -31,8 +31,9 @@
 <% if flash[:error] %>
   <div class="error"><%= flash[:error].full_messages.each { |error| "<p>#{error}</p>" } %></div>
 <% end %>
-
-<%= yield %>
+  <div class="main_container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
