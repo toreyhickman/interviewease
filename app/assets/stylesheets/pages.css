@@ -16,22 +16,13 @@
 }
 
 .centering_wrapper {
-  width: auto;
   float: none;
   margin: 0 auto;
-  text-align: center;
+  overflow: hidden;
 }
 
-.centering_wrapper 
-
-
-
-.modules {
-  margin: 0;
+.module {
+  width: 302px;
+  margin: 0 8px 0 8px;
   padding: 0;
-  list-style-type: none;
-}
-
-.modules li {
-  display: inline;
 }

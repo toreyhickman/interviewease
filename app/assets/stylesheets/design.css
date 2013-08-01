@@ -1,9 +1,22 @@
+a, a:visited, a:hover {
+  color: #3E98D9;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2B4E6A;
+}
+
 .left {
   float: left;
 }
 
 .right {
   float: right;
+}
+
+.center {
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
