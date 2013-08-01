@@ -1,40 +1,36 @@
-<h1>Feedback</h1>
-
-<%= @interview.candidate.name %>
-
+<h1><%= @interview.candidate.name %></h1>
+  
 <br>
 
-<div id="feedback_questions_wrapper">
+<div class="centering_wrapper one">
+  <div id="feedback_questions_wrapper">
+    <h2 class="center">How was the Interview</h2>
+      <div class="form_wrap">
+        <p>What topics were covered in the interview?</p>
+        <%= form_tag interview_feedback_path(@interview) do %>
+          <%= hidden_field_tag 'candidate_id', @interview.candidate_id %>
+          <% @company.topics.each do |t| %>
+            <%= check_box_tag "topic[][#{t.id}]" %><%= t.name %>
+            <br>
+        <% end %>
+      </div>
 
+      <div class="form_wrap">
+        <% @company.feedback_questions.each do |q| %>
+          <p><%= q.prompt %></p>
+          <%= hidden_field_tag 'response[][q_id]', q.id %>
+          <%= text_area_tag    'response[][response]' %><br>
+        <% end %>
+      </div>
 
-
-  <%= form_tag interview_feedback_path(@interview) do %>
-    <%= hidden_field_tag 'candidate_id', @interview.candidate_id %>
-
-    <% @company.topics.each do |t| %>
-
-      <%= check_box_tag "topic[][#{t.id}]" %> <%= t.name %>
-      <br>
-
-    <% end %>
-
-    <% @company.feedback_questions.each do |q| %>
-
-      <p><%= q.prompt %></p>
-      <%= hidden_field_tag 'response[][q_id]', q.id %>
-      <%= text_area_tag    'response[][response]' %>
-
-    <% end %>
-
-    <br>
-
-    <p>Would you recommend hiring this candidate?</p>
-    <%= radio_button_tag(:recommend, true) %> Yes
-    <br>
-    <%= radio_button_tag(:recommend, false) %> No
-    <br>
-    <%= submit_tag "Submit Feedback" %>
-
-  <% end %>
-
+        <p>Would you recommend hiring this candidate?</p>
+        <%= radio_button_tag(:recommend, true) %> Yes
+        <br>
+        <%= radio_button_tag(:recommend, false) %> No
+        <br>
+        <br>
+        <%= submit_tag "Submit Feedback" %>
+      <% end %>
+    </div>
+  </div>
 </div>
