@@ -1,37 +1,52 @@
+<div class="main_container">
 
-<h2>Employees: sign in here</h2>
-<%= form_tag ({controller: "sessions", action: "create"}) do %>
-
-<%= label_tag(:email, "Email: ") %>
-<%= text_field_tag(:email) %><br><br>
-<%= label_tag(:password, "Password: ") %>
-<%= password_field_tag(:password) %><br><br>
-<%= submit_tag "Sign In" %><br><br>
-
-<% end %>
-<p>-----------</p>
-<h2>Register your company here:</h2>
-
-<%= form_tag ({controller: "companies", action: "create"}) do %>
-
-  <%= label_tag(:name, "Company Name: ") %>
-  <%= text_field_tag(:name) %><br><br>
-  <%= fields_for Employee.new do |employee| %>
-    <%= employee.label(:name, "Enter your name.") %>
-    <%= employee.text_field(:name) %><br><br>
-    <%= employee.label(:email, "Enter your email.") %>
-    <%= employee.text_field(:email) %><br><br>
-    <%= employee.label(:password, "Enter your password.") %>
-    <%= employee.password_field(:password) %><br><br>
+  <% if flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
   <% end %>
-  
-  <%= submit_tag "Register" %><br><br>
 
-<% end %>
+  <div class ="value_prop left">
+    <div class="form_wrap">
+      <h2>register your company</h2>
+      <%= form_tag ({controller: "companies", action: "create"}) do %>
+        <%= label_tag(:name, "Company Name") %><br>
+        <%= text_field_tag(:name) %><br>
+        <%= fields_for Employee.new do |employee| %>
+          <%= employee.label(:name, "Your name") %>
+          <br>
+          <%= employee.text_field(:name) %><br>
+          <%= employee.label(:email, "Your email") %>
+          <br>
+          <%= employee.text_field(:email) %><br>
+          <%= employee.label(:password, "Password") %>
+          <br>
+          <%= employee.password_field(:password) %><br>
+        <% end %>
+        <%= submit_tag "Register Company" %>
+      <% end %>
+    </div>
+  </div>
 
-<h2>Check in for your interview.</h2>
-<%= form_tag checkins_path do %>
-  <%= label_tag(:identifier, "Type in your interview code here.") %>
-  <%= text_field_tag(:identifier) %>
-  <%= submit_tag "Check In" %>
-<% end %>
+  <div class="sign_in right">
+    <div class="form_wrap">
+      <h2>sign in and start interviewing</h2>
+      <%= form_tag ({controller: "sessions", action: "create"}) do %>
+        <%= label_tag(:email, "Email") %><br>
+        <%= text_field_tag(:email) %><br>
+        <%= label_tag(:password, "Password") %><br>
+        <%= password_field_tag(:password) %><br>
+        <%= submit_tag "Sign In" %><br>
+      <% end %>
+    </div>
+
+    
+    <div class="form_wrap">
+      <h2>candidates: enter code</h2>
+      <%= form_tag checkins_path do %>
+        <%= label_tag(:identifier, "Interview code") %><br>
+        <%= text_field_tag(:identifier) %><br>
+        <%= submit_tag "Check In" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     else
       @company = Company.new
     end
+    render :layout => 'landing'
   end
 
   def create
