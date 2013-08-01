@@ -1,0 +1,9 @@
+<h1>Create a Feedback Question</h1>
+
+<%= form_for @question do |f| %>
+  What question would you like to have answered after each interview?
+  <br>
+  <%= f.text_field :prompt %>
+  <br>
+  <%= f.submit "Add Question" %>
+<% end %>
