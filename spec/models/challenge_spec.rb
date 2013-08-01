@@ -6,14 +6,12 @@ describe Challenge do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:code) }
-    it { should validate_presence_of(:test_code) }
   end
 
   context "accessible attributes" do
     it { should allow_mass_assignment_of(:title) }
     it { should allow_mass_assignment_of(:description) }
     it { should allow_mass_assignment_of(:code) }
-    it { should allow_mass_assignment_of(:test_code) }
     it { should allow_mass_assignment_of(:public) }
   end
 
