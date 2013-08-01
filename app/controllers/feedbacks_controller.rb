@@ -1,4 +1,6 @@
 class FeedbacksController < ApplicationController
+  # before_filter :redirect_if_unauthenticated
+  # before_filter :redirect_if_unauthorized, except: :new
 
   def new
     @company = Company.includes(:topics, :feedback_questions).find(current_user.company.id)

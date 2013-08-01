@@ -106,7 +106,7 @@ describe ChallengesController, :type => :controller do
                                      description: "Add one plus one",
                                      code: "1 + 1" } }
           @challenge.reload
-          @challenge.code.should eq "Add one plus one"
+          @challenge.code.should eq "1 + 1"
         end
 
         it "redirects to the updated challenge" do
