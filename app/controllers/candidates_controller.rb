@@ -1,15 +1,11 @@
 class CandidatesController < ApplicationController
+  before_filter :redirect_if_unauthenticated
 
   def create
-    if current_user.company.candidates.find_by_name(params[:candidate][:name])
-      interviewee = Candidate.find_by_name(params[:candidate][:name])
-    else
-      interviewee = Candidate.new(name: params[:candidate][:name], email: params[:candidate][:email])
-      current_user.company.candidates << interviewee
-    end
-
-    if interviewee.id
-      scheduling_helper(interviewee)
+    @candidate = current_user.company.candidates.find_or_create_by_name(params[:candidate][:name])
+    @candidate.email = params[:candidate][:email]
+    if @candidate.save
+      scheduling_helper(@candidate)
       redirect_to current_user
     else
       flash[:error] = "Couldn't schedule the interview."

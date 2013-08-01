@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   def scheduling_helper(interviewee)
     current_user.interviewees << interviewee
+    # Move this to CandidatesController??
   end
 
   def redirect_if_unauthenticated
