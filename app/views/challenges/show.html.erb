@@ -2,7 +2,9 @@
 
 <h1><%= @challenge.title %></h1>
 
-<p>Original Author: <%= @challenge.author.name %><br>
+<% unless @challenge.author.name.nil? %>
+  <p>Original Author: <%= @challenge.author.name %><br>
+<% end %>
 
 Company: <%= link_to @challenge.company.name, @challenge.company %></p>
 
