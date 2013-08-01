@@ -1,10 +1,11 @@
 class InterviewsController < ApplicationController
 
-  def create # ?????????
-  end
-
   def show
-    @interview = Interview.find_by_identifier(params[:id])
+    if Interview.find_by_identifier(params[:id])
+      @interview = Interview.find_by_identifier(params[:id])
+    else
+      redirect_to root_url
+    end
   end
 
   def update
