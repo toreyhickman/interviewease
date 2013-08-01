@@ -13,8 +13,7 @@ describe ChallengesController, :type => :controller do
     @challenge = @company.challenges.create!(
                  title: Faker::Name.name,
                  description: Faker::Lorem.paragraph,
-                 code: Faker::Lorem.paragraph,
-                 test_code: Faker::Lorem.paragraph)
+                 code: Faker::Lorem.paragraph)
 
     @unauthorized_company = Company.create!(name: Faker::Name.name)
 
@@ -58,16 +57,14 @@ describe ChallengesController, :type => :controller do
         it "saves the challenge to the database" do
           expect { post :create, { challenge: { title: "One Plus Two",
                                  description: "Add one plus two",
-                                 code: "1 + 2",
-                                 test_code: "one_plus_two == 3" } }
+                                 code: "1 + 2" } }
           }.to change{ Challenge.count }.by(1)
         end
 
         it "redirects to created challenge" do
           post :create, { challenge: { title: "One Plus Two",
                                  description: "Add one plus two",
-                                 code: "1 + 2",
-                                 test_code: "one_plus_two == 3" } }
+                                 code: "1 + 2" } }
           response.should redirect_to Challenge.last
         end
       end
@@ -76,16 +73,14 @@ describe ChallengesController, :type => :controller do
         it "does not save the challenge to the database" do
           expect { post :create, { challenge: { title: "Missing attrs",
                                  description: "",
-                                 code: "",
-                                 test_code: "" } }
+                                 code: "" } }
             }.not_to change { Challenge.count }
         end
 
         it "re-renders the #new partial" do
           post :create, { challenge: { title: "Missing attrs",
                                  description: "",
-                                 code: "",
-                                 test_code: "" } }
+                                 code: "" } }
           response.should render_template :new
         end
       end
@@ -109,18 +104,16 @@ describe ChallengesController, :type => :controller do
           put :update, { id: @challenge.id,
                         challenge: { title: "One Plus One",
                                      description: "Add one plus one",
-                                     code: "1 + 1",
-                                     test_code: "one_plus_one.should eq 2" } }
+                                     code: "1 + 1" } }
           @challenge.reload
-          @challenge.test_code.should eq "one_plus_one.should eq 2"
+          @challenge.code.should eq "Add one plus one"
         end
 
         it "redirects to the updated challenge" do
           put :update, { id: @challenge.id,
                         challenge: { title: "One Plus One",
                                      description: "Add one plus one",
-                                     code: "1 + 1",
-                                     test_code: "one_plus_one.should eq 2" } }
+                                     code: "1 + 1" } }
           response.should redirect_to @challenge
         end
       end
@@ -129,7 +122,7 @@ describe ChallengesController, :type => :controller do
         it "does not save the changes to the database" do
           put :update, id: @challenge.id, title: ""
           @challenge.reload
-          @challenge.test_code.should_not eq ""
+          @challenge.title.should_not eq ""
         end
 
         # it "re-renders the #edit view" do
@@ -190,18 +183,16 @@ describe ChallengesController, :type => :controller do
         put :update, id: @challenge.id,
                       title: "One Plus One",
                       description: "Add one plus one",
-                      code: "1 + 1",
-                      test_code: "one_plus_one.should eq 2"
+                      code: "1 + 1"
         @challenge.reload
-        @challenge.test_code.should_not eq "one_plus_one.should eq 2"
+        @challenge.code.should_not eq "1 + 1"
       end
 
       it "should redirect to home page" do
         put :update, id: @challenge.id,
                       title: "One Plus One",
                       description: "Add one plus one",
-                      code: "1 + 1",
-                      test_code: "one_plus_one.should eq 2"
+                      code: "1 + 1"
         response.should redirect_to root_url
       end
     end
@@ -256,16 +247,14 @@ describe ChallengesController, :type => :controller do
       it "doesn't save the challenge to the database" do
         expect { post :create, { challenge: {title: "One Plus Two",
                                description: "Add one plus two",
-                               code: "1 + 2",
-                               test_code: "one_plus_two == 3" } }
+                               code: "1 + 2" } }
         }.not_to change { Challenge.count }
       end
 
       it "should redirect to log in page" do
         post :create, { challenge: {title: "One Plus Two",
                                description: "Add one plus two",
-                               code: "1 + 2",
-                               test_code: "one_plus_two == 3" } }
+                               code: "1 + 2" } }
         response.should redirect_to new_session_path
       end
     end
@@ -287,18 +276,16 @@ describe ChallengesController, :type => :controller do
         put :update, id: @challenge.id,
                       title: "One Plus One",
                       description: "Add one plus one",
-                      code: "1 + 1",
-                      test_code: "one_plus_one.should eq 2"
+                      code: "1 + 1"
         @challenge.reload
-        @challenge.test_code.should_not eq "one_plus_one.should eq 2"
+        @challenge.code.should_not eq "1 + 1"
       end
 
       it "should redirect to home page" do
         put :update, id: @challenge.id,
                       title: "One Plus One",
                       description: "Add one plus one",
-                      code: "1 + 1",
-                      test_code: "one_plus_one.should eq 2"
+                      code: "1 + 1"
         response.should redirect_to root_url
       end
     end
