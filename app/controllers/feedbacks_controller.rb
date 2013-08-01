@@ -7,33 +7,28 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-
-    puts
-    puts
-    puts
-    puts params[:response]
-    puts
-    puts
-    puts
-
-    params[:topic].each do |topic|
-      topic.each do |key, value|
-        ct = CoveredTopic.new
-        ct.topic_id = key
-        ct.candidate_id = params[:candidate_id]
-        ct.save
+    if params[:topic]
+      params[:topic].each do |topic|
+        topic.each do |key, value|
+          ct = CoveredTopic.new
+          ct.topic_id = key
+          ct.candidate_id = params[:candidate_id]
+          ct.save
+        end
       end
     end
 
-    params[:response].each do |response|
-      r = FeedbackResponse.new
+    if !params[:response].nil?
+      params[:response].each do |response|
+        r = FeedbackResponse.new
 
-      r.feedback_question_id = response[:q_id]
+        r.feedback_question_id = response[:q_id]
 
-      r.candidate_id = params[:candidate_id]
-      r.employee_id = current_user.id
-      r.response = response[:response]
-      r.save
+        r.candidate_id = params[:candidate_id]
+        r.employee_id = current_user.id
+        r.response = response[:response]
+        r.save
+      end
     end
 
     if params[:recommend] == "true" || params[:recommend] == "false"
