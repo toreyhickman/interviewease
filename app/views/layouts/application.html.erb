@@ -9,23 +9,23 @@
 <body>
 
 <% if current_user %>  
-<header>
-  <div class="header_info">
+  <header>
+    <div class="header_info">
+        
+        <div class="right">
+          <%= link_to "logout", logout_path, method: :delete %>
+        </div>
+
+        <div class="right header_right">
+          <%= link_to current_user.email, current_user %>
+        </div>
+
+        <div class="left">
+          <%= link_to current_user.company.name, current_user.company %>
+        </div>
       
-      <div class="right">
-        <%= link_to "logout", logout_path, method: :delete %>
-      </div>
-
-      <div class="right header_right">
-        <%= link_to current_user.email, current_user %>
-      </div>
-
-      <div class="left">
-        <%= link_to current_user.company.name, current_user.company %>
-      </div>
-    
-  </div>
-</header>
+    </div>
+  </header>
 <% end %>
 
 <% if flash[:error] %>
