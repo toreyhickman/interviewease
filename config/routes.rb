@@ -14,6 +14,7 @@ PairingRoulette::Application.routes.draw do
   resources :sessions
   resources :checkins
   resources :given_challenges
+  resources :feedback_questions
   
   match '/interviews/:identifier', to: 'interviews#show'
   match '/api/update_code', to: 'api#update_code'

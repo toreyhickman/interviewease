@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   before_filter :redirect_if_unauthorized, only: :show
 
   def show
-    @company = current_user.company
+    @company = Company.includes(:employees, :challenges, :topics, :feedback_questions).find(current_user.company.id)
   end
 
   def create
