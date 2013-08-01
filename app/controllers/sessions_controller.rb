@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  def create_company
+  def create_company # This shouldn't be in the sessions controller
     @company = Company.create(params[:company])
   end
 
