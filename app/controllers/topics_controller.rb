@@ -6,9 +6,10 @@ class TopicsController < ApplicationController
 	end
 
 	def create
-	  @topic = Topic.new(params[:topic])
-	  current_user.company.topics << @topic
-    redirect_to current_user.company
+    if @topic = current_user.company.topics.create(params[:topic])
+      redirect_to current_user.company
+    else
+      render :new
+    end
 	end
-
 end
