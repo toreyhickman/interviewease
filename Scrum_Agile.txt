@@ -1,0 +1,79 @@
+Scrum:
+
+-What is Scrum?
+
+It's a workflow for dealing with new product development.  It's an alternative to approaches that were more 
+suitable to industries like manufacturing, construction and other fields which emphasized execution over 
+innovation.  Software development is less repeatable and predictable.  Imposing timeboxes and feedback loops
+helps us manage this uncertainty.  Scrum is our attempt to put this chaos in a box.  It has mostly been
+used for software development, but it can also be used for other complex, rapidly changing fields too.
+
+-What is the goal of Agile approaches?
+
+An early and sustainable rate of valuable feature delivery.  We want to see some features working early, 
+rather than a huge release at the end.  
+
+-What is Scrum NOT?
+
+It is not a linear, start-to-finish process where all analysis is done first, then all design, then all code,
+etc. (i.e. it doesn't follow a Gantt chart).  This workflow often fails because we rarely have perfect 
+information beforehand.  A waterfall approach requires us to make all of our decisions at the beginning, 
+when we know the least, but we know less about our project at the beginning than we're ever going to know (i.e.
+"Today is the dumbest day of the rest of our project").  
+
+How does Scrum work?
+
+In Scrum, product planners consider the project from the perspective of users, and develop user stories based
+on how the user might interact with the final product.  These user stories lead into possible product features.
+These features are then grouped by user story and each user story is prioritized according to business goals.
+The team then conducts "sprints", or feature development sessions of a fixed length of time (usually 1-2 weeks),
+at the end of which a possible finished product is delivered to the client.  These initial products often
+result in significant feedback, which is considered normal (customers often need to see the wrong product
+before they can specify what they really need.
+
+What skills are required for a Scrum team in order to make a shippable product in this length of time?
+
+(note: team members should work together, and avoid hand-offs)
+-testing
+-design
+-business requirements
+-coding
+
+What roles are defined by Scrum?
+
+-Product owner (responsible for ROI on the product, final arbiter of requirements questions, prioritizes backlog,
+focused more on the 'what' than the 'how')
+-Dev team (small [4-9 ppl] cross-functional team, attempts to build a 'potentially shippable product' during 
+every sprint, collaborates together, self-organizing)
+-Scrum master (intentionally has no management authority, acts as a facilitator, protects the team from 
+distractions and interruptions, removes obstacles, helps teach ppl how to use Scrum, enforces timeboxes, etc.)
+
+What tools/artifacts does Scrum rely on?
+
+-Product backlog (a one-dimensional, ranked list of features [called product backlog items] prioritized by 
+the product owner; anyone can add items, but the product owner has to prioritize them and the Scrummaster 
+has to make them visible)
+-Sprint backlog (what the team has agreed to do during the current sprint, divided into sprint backlog items which
+represent the 'what', sprint tasks [divided into 'not started', 'in progress' and 'completed'] which rep-
+resent the 'how', and an end date).
+
+What meeting types are found in Scrum?
+
+-The spring planning meeting (team decides which PBIs are added to the sprint based on priority, commits them
+to the sprint backlog, breaks them into smaller tasks, decides if it's the right amount of work to do, and
+plans how much time will be needed to do them)
+-The daily Scrum (the team reports to each other about what they did the day before, what obstacles they are
+encountering, and what they will do today)
+-The spring review meeting (the team demonstrates a potentially shippable product to the product owner and
+any other stakeholders; the product owner gives feedback- which features are done and which need more work, 
+and completion velocity is measured and completion date recalculated based on any new requirements)
+-The spring retrospective meeting (the team inspects and adapts their process, how they worked together, what
+went well, what can be improved, what they learned, what still puzzles the group, and give feedback to each
+other)
+-(unofficial) the backlog refinement meeting (the team and the product owner get together and look ahead to
+the next few items in the product backlog; these items are clarified, broken down into user stories, consider
+dependencies, etc.)
+
+
+
+

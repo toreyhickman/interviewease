@@ -1,7 +1,7 @@
 <small>:: <%= current_user.company.name %>/New Challenge</small>
 
 <h1>New Challenge</h1>
-<%= link_to "Back To Company Homepage", @company %><br><br>
+<%= link_to "Back To Company Homepage", company_path(@company) %><br><br>
 
   <%= form_for @challenge, url: {action: "create"} do |f| %>
 

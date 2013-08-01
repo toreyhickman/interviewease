@@ -1,10 +1,18 @@
-# Multiples of 3 and 5
+# Title: Sum of Multiples of 3 and 5
+
+# Code
+
+# def sum_of_multiples
+
+# end
+
+# Answer:
 
 # def is_suitable_num?(num)
 #   num%3 == 0 || num%5 == 0
 # end
 
-# def return_array(num)
+# def sum_of_multiples(num)
 #   array = []
 #   num.times do |x|
 #     if is_suitable_num?(x)
@@ -14,10 +22,9 @@
 #   array.inject(&:+)
 # end
 
-puts is_suitable_num?(5)
-puts !is_suitable_num?(7)
-puts return_array(100) == 2318
-puts return_array(1000) == 233168
+
+puts sum_of_multiples(100) == 2318
+puts sum_of_multiples(1000) == 233168
 
 ###############################################################################################################
 
