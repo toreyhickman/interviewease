@@ -18,4 +18,6 @@ class Candidate < ActiveRecord::Base
   has_many :covered_topics
   has_many :addressed_topics, :through => :covered_topics, :source => :topic
 
+  has_many :feedback_responses
+
 end
