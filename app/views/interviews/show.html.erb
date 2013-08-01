@@ -1,114 +1,115 @@
+<div class="page_heading">
+  <h1><%= @interview.candidate.name %></h1>
+</div>
+
+
 <div id="interview_show_wrapper" 
   data-identifier=<%= @interview.identifier %>
   data-interviewid=<%= @interview.id %>
   data-candidateid=<%= @interview.candidate.id %>
 >
   <% if current_user %>
-  <div id="interview_sidebar">
+    <div class="sidebar">
 
-    <div id="interview_sidebar_challenge_identifier">
-      <h3>Interview Code</h3>
-      <p id="interview_identifier"><%= @interview.identifier %></p>
-      <p><small>give this code to the candidate</small></p>
-    </div>
+      <div class="sidebar_sub">
+        <h2 class="blue">Interview Code</h2>
+        <p id="interview_identifier"><%= @interview.identifier %></p>
+        <p><small>give this code to the candidate</small></p>
+      </div>
 
-    <div id="interview_sidebar_conadidate">
-      <h3><%= @interview.candidate.name %></h3>
+      <div class="sidebar_sub">
+        <h2 class="blue">Previous Interviews</h2>
 
-      <div class="candidate_section">
-        <h4>Challenges Attempted</h4>
-        <% if @interview.candidate.attempted_challenges.any? %>
-          <% @interview.candidate.attempted_challenges.each do |ac| %>
-            <p><%= ac.title %></p>
+        <div class="candidate_section">
+          <h4>Challenges Attempted</h4>
+          <% if @interview.candidate.attempted_challenges.any? %>
+            <% @interview.candidate.attempted_challenges.each do |ac| %>
+              <p><%= ac.title %></p>
+            <% end %>
+          <% else %>
+            <p>no challenges attempted</p>
+          <% end %>
+        </div>
+
+        <br>
+
+        <h4>Topics Covered</h4>
+        <% if @interview.candidate.addressed_topics.any? %>
+          <% @interview.candidate.addressed_topics.each do |at| %>
+            <p><%= at.name %></p>
           <% end %>
         <% else %>
-          <p>no challenges attempted</p>
+          <p>no topics covered</p>
         <% end %>
       </div>
 
-      <h4>Topics Covered</h4>
-      <% if @interview.candidate.addressed_topics.any? %>
-        <% @interview.candidate.addressed_topics.each do |at| %>
-          <p><%= at.name %></p>
+      <div class="sidebar_sub">
+        <h2 class="blue">Challenges</h2>
+
+        <h4><%= current_user.company.name.capitalize %></h4>
+          <% current_user.company.challenges.each do |ch| %>
+            <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span><br>
+          <% end %>
+        <br>
+        <h4>Public</h4>
+          <% Challenge.where("public = true").each do |ch| %>
+            <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span><br>
+          <% end %>
+      </div>
+
+      <div id="end_interview">
+        <%= form_for @interview do |f| %>
+          <%= f.hidden_field :complete, :value => true %>
+          <%= f.submit "End Interview" %>
         <% end %>
-      <% else %>
-        <p>no topics covered</p>
-      <% end %>
+      </div>
+
     </div>
-
-    <div id="interview_sidebar_challenges">
-      <h3>Challenges</h3>
-
-      <h4><%= current_user.company.name.capitalize %></h4>
-        <% current_user.company.challenges.each do |ch| %>
-          <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span><br>
-        <% end %>
-      <h4>Public</h4>
-        <% Challenge.where("public = true").each do |ch| %>
-          <span data-challengeid="<%= ch.id %>" class="clickable"><%= ch.title %></span><br>
-        <% end %>
-    </div>
-
-    <div id="interview_sidebar_end_challenge" class="clickable">
-      <%= form_for @interview do |f| %>
-        <%= f.hidden_field :complete, :value => true %>
-        <%= f.submit "End Interview" %>
-      <% end %>
-    </div>
-
-
-  </div>
   <% end %>
+
 
   <div id ="interview_challenge_wrapper">
 
+    <h2 class="challenge_title">Challenge</h1>
+    <div>
+      <div id="interview_challenge_description" class="challenge_description_div_with_bottom_margin">
+        After a challenge is chosen, its description will be displayed here.
+      </div>
+    </div>
+
     <div id="interview_editor_wrapper">
-    
-      <h1 class="challenge_title">Challenge</h1>
 
       <div class="code" id="code"></div>
 
       <div id="interview_editor_buttons_wrapper">
         
-        <%= render "select_theme" %>
+        <div class="left">
+          <%= render "select_theme" %>
+        </div>
 
-        <a href="#" id="run_code">Run!</a>
+        <div class="right">
+          <a href="#" id="run_code">Run the Code</a>
+        </div>
+
       </div>
+
+      <div>
+        <h2>Results</h3>
+        <div id="code_results">The result of running your code will output here.</div>
+      </div>
+
     </div>
 
     <div id="interview_info_wrapper" class="right">
 
-      <div>
-        <h3>Challenge Description</h3>
-        <div id="interview_challenge_description" class="challenge_description_div_with_bottom_margin">
-          After a challenge is chosen, its description will be displayed.
-        </div>
+      <div id="remote_video" class="remote_video_wrapper left">
       </div>
 
+      <div class="local_video_wrapper right">
+        <video id="local_video"></video>
       <div>
-        <h3>Make These Tests Pass</h3>
-        <div id="interview_test_code" class="challenge_description_div_with_bottom_margin">
-          The test code will appear here.
-        </div>
-      </div>
 
-      <div>
-        <h3>Results</h3>
-        <div id="code_results"></div>
-      </div>
     </div>
-
-  </div>
-
-  <div id="interview_video_wrapper">
-
-    <div id="remote_video" class="remote_video_wrapper left">
-    </div> 
-
-    <div class="local_video_wrapper right">
-      <video id="local_video"></video>
-    <div>
-
   </div>
 </div>
 

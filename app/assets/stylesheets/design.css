@@ -20,7 +20,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 16px 0;
+  margin: 0 0 8px 0;
   padding: 0;
   color: #3E94D9;
 }
@@ -55,4 +55,13 @@ body {
   text-align: center;
   margin: 0 auto 32px auto;
   color: darkorange;
+}
+
+p {
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+span {
+  display: inline-block;
+  margin: 0 0 8px 0;
 }

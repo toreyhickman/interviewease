@@ -1,40 +1,18 @@
-.clickable:hover {
-  cursor: pointer;
-  color: orange;
+.sidebar_sub h2.blue {
+  color: #999999;
 }
 
-#interview_show_wrapper {
-  width: 1000px;
-  height: 1000px;
-  overflow: hidden;
+.sidebar h4 {
+  color: #3E94D9;
 }
 
-#interview_show_wrapper h3, #interview_show_wrapper h4 {
+.sidebar h2, .sidebar h4 {
   margin-bottom: 8px;
 }
 
-#interview_sidebar {
-  float: left;
-  width: 182px;
-  padding: 8px;
-  min-height: 600px;
-  border: 1px solid black;
-  overflow: hidden;
-}
-
-#interview_sidebar p {
-  margin: 0 0 4px 0;
-  padding: 0;
-}
-
-#interview_sidebar span {
-  display: inline-block;
-  margin: 0 0 4px 0;
-  padding: 0;
-}
-
-#interview_sidebar_conadidate, #interview_sidebar_challenges, #interview_sidebar_challenge_identifier {
-  margin-bottom: 40px;
+.clickable:hover {
+  cursor: pointer;
+  color: #3E94D9;
 }
 
 .candidate_section {
@@ -43,10 +21,11 @@
 
 #interview_challenge_wrapper {
   float: right;
-  width: 754px;
-  padding: 8px;
-  border: 1px solid black;
+  width: 770px;
+  padding: 0;
+  /*border: 1px solid black;*/
   overflow: hidden;
+  /*margin-top: -84px;*/
   margin-bottom: 16px;
 }
 
@@ -55,7 +34,7 @@
 }
 
 #interview_editor_wrapper {
-  background-color: gray;
+  /*background-color: gray;*/
   width: 400px;
   float: left;
 }
@@ -63,10 +42,12 @@
 #interview_editor_buttons_wrapper {
   width: 400px;
   padding: 16px 0 0 0;
+  overflow: hidden;
+  margin-bottom: 32px;
 }
 
 #code {
-  height: 400px;
+  height: 500px;
 }
 
 #themechange {
@@ -81,11 +62,12 @@
 
 #interview_info_wrapper {
   width: 330px;
-  background-color: gray;
+  /*background-color: gray;*/
 }
 
 .challenge_description_div_with_bottom_margin {
   margin-bottom: 40px;
+  max-width: 400px;
 }
 
 #interview_video_wrapper {
@@ -97,21 +79,39 @@
 
 .remote_video_wrapper {
   overflow: hidden;
-  background-color: gray;
-  width: 400px;
+  background-color: #f7f7f7;
+  width: 328px;
   height: 300px;
   text-align: center;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid #999999;
 }
 
 .local_video_wrapper {
   overflow: hidden;
-  background-color: gray;
-  height: 300px;
+  background-color: #f7f7f7;
+  height: 328px;
   width: 330px;
-  text-align: center
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #999999;
+  overflow: hidden;
 }
 
 video {
   height: 100%;
   display: inline-block;
+}
+
+#run_code {
+  padding: 6px 24px;
+  background-color: #3E94D9;
+  color: white;
+  border-radius: 4px;
+}
+
+#run_code:hover {
+  background-color: #2B4E6A;
 }

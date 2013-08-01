@@ -18,6 +18,7 @@
 .sidebar {
   float: left;
   width: 200px;
+  /*overflow: hidden;*/
 }
 
 .sidebar h2 {
@@ -30,6 +31,10 @@
 
 .sidebar a:hover {
   color: #3E98D9;
+}
+
+.sidebar_sub {
+  margin-bottom: 48px;
 }
 
 .centering_wrapper {
