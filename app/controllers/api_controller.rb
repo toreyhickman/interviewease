@@ -5,9 +5,9 @@ class ApiController < ApplicationController
   end
 
   def update_challenge
-    @challenge = Challenge.find(params[:challenge_id])
-    Pusher[params[:channel]].trigger_async('update_challenge', @challenge)
-    GivenChallenge.create(challenge_id: @challenge.id, candidate_id: params[:candidate_id], interview_id: params[:interview_id])
+    challenge = Challenge.find(params[:challenge_id])
+    Pusher[params[:channel]].trigger_async('update_challenge', challenge)
+    GivenChallenge.create(challenge_id: challenge.id, candidate_id: params[:candidate_id], interview_id: params[:interview_id])
     render :text => "challenge updated"
   end
 
