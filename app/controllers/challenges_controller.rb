@@ -12,6 +12,7 @@ class ChallengesController < ApplicationController
 
   def create
     @challenge = current_user.company.challenges.new(params[:challenge])
+    @challenge.author = current_user ? current_user : nil
     if @challenge.save
       redirect_to @challenge
     else
