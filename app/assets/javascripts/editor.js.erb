@@ -37,7 +37,7 @@ InterviewEditor.prototype.updateView = function(data) {
 }
 
 InterviewEditor.prototype.updateChallengeView = function(data) {
-  $('h1').html(data['title']);
+  $('.challenge_title').html(data['title']);
   $('#interview_challenge_description').html(data['description']);
   $('#interview_test_code').html(data['test_code']);
   cursor = this.code.getCursor();
