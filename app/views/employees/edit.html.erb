@@ -1,16 +1,19 @@
-<small>:: Employees/<%= link_to "#{@employee.company.name}", @employee.company %>/<%= @employee.name %> EDIT</small>
+<div class="page_heading">
+  <h1><%= @employee.name ? @employee.name : @employee.email %></h1>
+</div>
 
-<h1>Edit Employee: <%= @employee.name %></h1>
-
-<%= link_to "Employee's Home", @employee %> | 
-<%= link_to "Company Home", @employee.company %><br><br>
-
-
-<%= form_for @employee, url: {action: "update"} do |f| %>
-
-  <%= f.label "Name: " %> <%= f.text_field (:name) %><br><br> 
-  <%= f.label "Email Address: " %> <%= f.text_field (:email) %><br><br>
-  <%= f.label "Enter New Password Here: " %> <%= f.text_field (:password), value: "" %><br><br>
-  <%= f.submit "Edit Employee" %><br><br>
-
-<% end %>
+<div class="centering_wrapper one">
+  <div class="form_wrap">
+    <h2 class="center">Enter Info</h2>
+    <%= form_for @employee, url: {action: "update"} do |f| %>
+      <%= f.label "Name: " %>
+      <%= f.text_field (:name) %><br>
+      <%= f.label "Email Address: " %>
+      <%= f.text_field (:email) %><br>
+      <%= f.label "Enter New Password Here: " %>
+      <%= f.password_field (:password), value: "" %><br>
+      <%= f.submit "Update" %>
+    <% end %>
+  </div>
+  <p class="center"><%= link_to "cancel", current_user %></p>
+</div>

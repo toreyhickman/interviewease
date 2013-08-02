@@ -1,0 +1,29 @@
+header {
+  width: 100%;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  height: 30px;
+  color: #eeeeee;
+  background-color: #999999;
+}
+
+.header_right {
+  padding-right: 16px;
+}
+
+.header_info {
+  width: 1000px;
+  margin: 0 auto 0 auto;
+  padding: 4px 0 0 0;
+}
+
+header a, header a:visited, header a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+header a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,24 @@
+.company-module {
+  width: 168px;
+  padding: 0 16px;
+}
+
+.company_module_heading {
+  height: 52px;
+}
+
+.company_link {
+  font-size: 80%;
+}
+
+.company_link a, .company_link a:visited {
+  color: #999999;
+}
+
+.company_link a:hover {
+  color: #3E94D9;
+}
+
+.company_list {
+  margin-top: 32px;
+}

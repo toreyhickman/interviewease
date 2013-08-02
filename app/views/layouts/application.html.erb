@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PairingRoulette</title>
+  <title>InterviewEase | Easy Interviews done Remotely</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="user_nav">
-  <% if current_user %>
-    Logged in as <%= current_user.email %> | <%= link_to "Logout", logout_path, method: :delete %>
-  <% end %>
-</div>
 
+<% if current_user %>  
+  <header>
+    <div class="header_info">
+        
+        <div class="right">
+          <%= link_to "logout", logout_path, method: :delete %>
+        </div>
 
-<% if flash[:error] %>
-  <div class="error"><%= flash[:error] %></div>
+        <div class="right header_right">
+          <%= link_to current_user.email, current_user %>
+        </div>
+
+        <div class="left">
+          <%= link_to current_user.company.name, current_user.company %>
+        </div>
+      
+    </div>
+  </header>
 <% end %>
 
-<%= yield %>
+<% if flash[:error] %>
+  <div class="error"><%= flash[:error].full_messages.each { |error| "<p>#{error}</p>" } %></div>
+<% end %>
+  <div class="main_container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

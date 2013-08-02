@@ -1,30 +1,37 @@
-<small>:: Employees/<%= link_to "#{@employee.company.name}", @employee.company %>/<%= @employee.name %></small>
+<div class="page_heading">
+  <h1><%= @employee.name ? @employee.name : @employee.email %></h1>
+  <% if current_user.id == @employee.id %>
+  <%= link_to "edit", edit_employee_path(@employee.id) %> <%= link_to "delete", @employee, method: :delete %>
+  <% end %>
+</div>
 
-<h1><%= @employee.name ? @employee.name : @employee.email %></h1>
+<div class="sidebar">
+  <h2>My Interviews</h2>
+    <% @interviews.each do |interview| %>
+      <p><%= link_to interview.candidate.name, interview %></p>
+    <% end %>
+</div>
 
-<% if current_user.id == @employee.id %>
-<%= link_to "edit profile", edit_employee_path(@employee.id) %> | <%= link_to "delete account", @employee, method: :delete %>
-<% end %>
-
-<h2>Scheduled Interviews</h2>
-<% @interviews.each do |interview| %>
-  <p><%= link_to interview.candidate.name, interview %></p>
-  <p>
-    <small>
-      <% if interview.start %>
-        <p><%= "Scheduled for #{interview.start}" %></p>
+<div class="centering_wrapper employee_show">
+  <div class="module left">
+    <h2 class="center">Set Up an Intervew</h2>
+    <div class="form_wrap">
+      <%= form_for Candidate.new do |f| %>
+        <%= f.label(:name, "Candidate name") %>
+        <%= f.text_field :name %>
+        <br>
+        <%#= f.label(:email, "Candidate email") %>
+        <%#= f.text_field :email %>
+        <!-- <br> -->
+        <%= f.submit "Add"%>
       <% end %>
-    </small>
-  </p>
-<% end %>
+    </div>
+  </div>
+</div>
 
-<h2>Create New Interview</h2>
-<%= form_for Candidate.new do |f| %>
-  <%= f.label(:name, "Who will you be interviewing?") %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label(:email, "If you know their e-mail, enter it here.") %>
-  <%= f.text_field :email %>
-  <br>
-  <%= f.submit %>
-<% end %>
+
+<script>
+  $(document).ready(function() {
+    $('#candidate_name').focus();
+  });
+</script>

@@ -1,0 +1,81 @@
+.form_wrap {
+  width: 310px;
+  margin: 0 0 32px 0;
+  overflow: hidden;
+}
+
+.form_wrap input {
+  display: block;
+  width: 292px;
+  margin: 4px 0 0 0;
+  padding: 4px;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  overflow: hidden;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid #3E98D9;
+}
+
+input[type=submit] {
+  display: block;
+  width: 302px;
+  color: #eeeeee;
+  padding: 8px 0;
+  margin-top: 16px;
+  border: 1px solid #3E98D9;
+  background-color: #3E98D9;
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type=submit]:hover {
+  background-color: #2B4E6A;
+  border-color: #2B4E6A;
+}
+
+#end_interview {
+  float: right;
+}
+
+#end_interview input[type=submit] {
+  width: auto;
+  margin-top: 0px;
+  padding: 6px 24px;
+  background-color: #3E94D9;
+  color: white;
+  border-radius: 4px;
+}
+
+#end_interview input[type=submit]:hover {
+  background-color: #2B4E6A;
+}
+
+input[type=checkbox] {
+  display: inline;
+  width: auto;
+  margin-right: 8px;
+}
+
+input[type=radio] {
+  margin-left: 1px;
+  outline: none;
+}
+
+.form_wrap textarea {
+  display: block;
+  width: 292px;
+  margin: 4px 0 0 0;
+  padding: 4px;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  overflow: hidden;
+  outline: none;
+  resize: none;
+}
+
+textarea:focus {
+  border: 1px solid #3E98D9;
+}

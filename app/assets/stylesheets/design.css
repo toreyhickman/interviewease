@@ -1,3 +1,25 @@
+footer {
+  color: #999999;
+  width: 100%;
+  margin: 0 auto 100px auto;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+a, a:visited, a:hover {
+  color: #3E98D9;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2B4E6A;
+}
+
 .left {
   float: left;
 }
@@ -6,14 +28,20 @@
   float: right;
 }
 
+.center {
+  text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+  margin: 0 0 8px 0;
   padding: 0;
+  color: #3E94D9;
 }
 
 body {
-  width: 1000px;
-  margin: auto !important;
+  font-size: 14px;
+  color: #666666;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 #interviews, #challenges, #topics, #employees {
@@ -28,4 +56,26 @@ body {
 #interviews ul, #challenges ul, #topics ul, #employees ul {
   padding: 0px;
   list-style: none;
+}
+
+.main_container {
+  width: 1000px;
+  margin: 70px auto 0 auto;
+  overflow: hidden;
+}
+
+.error {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 32px auto;
+  color: darkorange;
+}
+
+p {
+  margin: 0 0 8px 0;
+  padding: 0;
+}
+span {
+  display: inline-block;
+  margin: 0 0 8px 0;
 }

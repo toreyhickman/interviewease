@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       redirect_to current_user
     else
       @company = Company.new
+      render :layout => 'landing'
     end
   end
 

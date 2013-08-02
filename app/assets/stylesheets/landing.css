@@ -1,0 +1,33 @@
+.landing_white_space {
+  width: 100%;
+  height: 100px;
+}
+
+.value_prop {
+  margin: 0 0 0 100px;
+}
+
+.sign_in {
+  margin: 0 100px 0 0;
+}
+
+#interview_ease {
+  overflow: hidden;
+}
+
+#landingh1 {
+  color: #666666;
+  font-size: 4em;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+}
+
+.landing_sub {
+  font-size: 1.4em;
+  color: #999999;
+  margin-bottom: 80px;
+}
+
+#registration_form {
+  margin-left: 30px;
+}

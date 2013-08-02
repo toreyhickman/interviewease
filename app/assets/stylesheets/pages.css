@@ -1,0 +1,50 @@
+.page_heading {
+  margin-bottom: 48px;
+}
+
+.page_heading a {
+  margin: 0 8px 0 0;
+}
+
+.page_heading a, .page_heading a:visited, .page_heading a:hover {
+  color: #999999;
+}
+
+.page_heading a:hover {
+  color: #3E98D9;
+}
+
+.sidebar {
+  float: left;
+  width: 200px;
+  /*overflow: hidden;*/
+}
+
+.sidebar h2 {
+  color: #999999;
+}
+
+.sidebar a, .sidebar a:visited, .sidebar a:hover {
+  color: #999999;
+}
+
+.sidebar a:hover {
+  color: #3E98D9;
+}
+
+.sidebar_sub {
+  margin-bottom: 48px;
+}
+
+.centering_wrapper {
+  float: none;
+  margin: 0 auto;
+  overflow: hidden;
+  /*background-color: pink;*/
+}
+
+.module {
+  width: 302px;
+  margin: 0 8px 0 8px;
+  padding: 0;
+}
