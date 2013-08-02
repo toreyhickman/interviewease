@@ -60,12 +60,8 @@ body {
 
 .main_container {
   width: 1000px;
-<<<<<<< HEAD
   margin: 70px auto 0 auto;
   overflow: hidden;
-=======
-  margin: 50px auto 0 auto;
->>>>>>> styling checkin
 }
 
 .error {
@@ -74,7 +70,6 @@ body {
   margin: 0 auto 32px auto;
   color: darkorange;
 }
-<<<<<<< HEAD
 
 p {
   margin: 0 0 8px 0;
@@ -84,6 +79,3 @@ span {
   display: inline-block;
   margin: 0 0 8px 0;
 }
-
-=======
->>>>>>> styling checkin
