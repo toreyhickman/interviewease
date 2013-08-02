@@ -36,20 +36,21 @@ input[type=submit]:hover {
   border-color: #2B4E6A;
 }
 
+#end_interview {
+  float: right;
+}
+
 #end_interview input[type=submit] {
-  display: block;
-  width: 200px;
-  color: #eeeeee;
-  padding: 8px 0;
-  margin-top: 16px;
-  /*margin-bottom: 24px;*/
-  border: 1px solid #3E98D9;
-  background-color: #3E98D9;
+  width: auto;
+  margin-top: 0px;
+  padding: 6px 24px;
+  background-color: #3E94D9;
+  color: white;
+  border-radius: 4px;
 }
 
 #end_interview input[type=submit]:hover {
   background-color: #2B4E6A;
-  border-color: #2B4E6A;
 }
 
 input[type=checkbox] {

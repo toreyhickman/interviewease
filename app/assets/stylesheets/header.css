@@ -6,7 +6,8 @@ header {
   top: 0;
   height: 30px;
   color: #eeeeee;
-  background-color: #2B4E6A;
+  /*background-color: #2B4E6A;*/
+  background-color: #999999;
 }
 
 .header_right {
@@ -25,5 +26,6 @@ header a, header a:visited, header a:hover {
 }
 
 header a:hover {
-  color: #3E98D9;
+  /*color: #3E98D9;*/
+  text-decoration: underline;
 }

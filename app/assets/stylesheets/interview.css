@@ -23,9 +23,7 @@
   float: right;
   width: 770px;
   padding: 0;
-  /*border: 1px solid black;*/
   overflow: hidden;
-  /*margin-top: -84px;*/
   margin-bottom: 16px;
 }
 
@@ -34,7 +32,6 @@
 }
 
 #interview_editor_wrapper {
-  /*background-color: gray;*/
   width: 400px;
   float: left;
 }
@@ -67,7 +64,7 @@
 
 .challenge_description_div_with_bottom_margin {
   margin-bottom: 40px;
-  max-width: 400px;
+  /*max-width: 400px;*/
 }
 
 #interview_video_wrapper {

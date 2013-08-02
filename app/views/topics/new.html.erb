@@ -1,11 +1,14 @@
-<small>:: <%= current_user.company.name %>/New Topic</small>
+<div class="page_heading">
+  <h1>New Topic</h1>
+</div>
 
-<h1>New Topic</h1>
-
-<%= form_for @topic, url: {action: "create"} do |f| %>
-
-  <%= f.label "Name: " %><br><br>
-  <%= f.text_field (:name) %><br><br>
-  <%= f.submit "Add Topic" %><br><br>
-
-<% end %>
+<div class="centering_wrapper one">
+  <div class="form_wrap">
+    <h2 class="center">Enter Topic Name</h2>
+    <%= form_for @topic, url: {action: "create"} do |f| %>
+      <%= f.label "Name: " %>
+      <%= f.text_field (:name) %><br>
+      <%= f.submit "Add Topic" %>
+    <% end %>
+  </div>
+</div>

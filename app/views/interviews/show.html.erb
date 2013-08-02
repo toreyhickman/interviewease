@@ -57,6 +57,11 @@
           <% end %>
       </div>
 
+    </div>
+  <% end %>
+
+
+  <div id ="interview_challenge_wrapper">
       <div id="end_interview">
         <%= form_for @interview do |f| %>
           <%= f.hidden_field :complete, :value => true %>
@@ -64,19 +69,17 @@
         <% end %>
       </div>
 
-    </div>
-  <% end %>
 
+      <div class="challenge_description">
 
-  <div id ="interview_challenge_wrapper">
-
-    <h2 class="challenge_title">Challenge</h1>
-    <div>
-      <div id="interview_challenge_description" class="challenge_description_div_with_bottom_margin">
-        After a challenge is chosen, its description will be displayed here.
+      <h2 class="challenge_title">Challenge</h2>
+      <div>
+        <div id="interview_challenge_description" class="challenge_description_div_with_bottom_margin">
+          After a challenge is chosen, its description will be displayed here.
+        </div>
       </div>
     </div>
-
+    
     <div id="interview_editor_wrapper">
 
       <div class="code" id="code"></div>

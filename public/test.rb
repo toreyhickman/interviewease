@@ -1,3 +1,1 @@
-class Ruby
-  
-end
+puts "Hey"

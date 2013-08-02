@@ -4,8 +4,9 @@
 
 <div class="centering_wrapper one">
   <div id="feedback_questions_wrapper">
-    <h2 class="center">How was the Interview</h2>
+    
       <div class="form_wrap">
+        <h2 class="center">How was the Interview?</h2>
         <p>What topics were covered in the interview?</p>
         <%= form_tag interview_feedback_path(@interview) do %>
           <%= hidden_field_tag 'candidate_id', @interview.candidate_id %>

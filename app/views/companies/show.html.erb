@@ -3,56 +3,66 @@
 </div>
 
 <div class="centering_wrapper">
-  <div id="employees">
-  <h2>Employees
-  [<%= link_to "+", new_employee_path %>]</h2>
-  <table>
-    <% @company.employees.each do |employee| %>
-    <tr>
-    <td><%= link_to employee.name, employee %></td>
-    </tr>
-    <% end %>
-  </table>
+
+  <div class="company-module left">
+    <h2 class="center"><br>Employees</h2>
+    <p class="company_link center">
+      <%= link_to "add employee", new_employee_path %>
+    </p>
+
+    <div class="company_list">
+      <% @company.employees.each do |employee| %>
+        <p><%= employee.name %></p>
+      <% end %>
+    </div>
   </div>
 
+  <div class="company-module left">
+    <h2 class="center"><br>Candidates</h2>
+    <p class="company_link center" style="color:white;"><%= "h" %></p>
 
-  <div class="float:left;">
+    <div class="company_list">
+      <% @company.candidates.each do |candidate| %>
+        <p><%= candidate.name %></p>
+      <% end %>
+    </div>
+  </div>
 
-    <div id="challenges">
-    <h2>Challenges [<%= link_to "+", new_challenge_path %>]</h2>
-    <table>
+  <div class="company-module left">
+    <h2 class="center">Feedback Questions</h2>
+    <p class="company_link center">
+      <%= link_to "add question", new_feedback_question_path %>
+    </p>
+  
+    <div class="company_list">
+      <% @company.feedback_questions.each do |question| %>
+        <p><%= question.prompt %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="company-module left">
+    <h2 class="center"><br>Challenges</h2>
+    <p class="company_link center">
+      <%= link_to "add challenge", new_challenge_path %>
+    </p>
+  
+    <div class="company_list">
       <% @company.challenges.each do |challenge| %>
-      <tr>
-      <td><%= link_to challenge.title, challenge %></td>
-      <td><%= link_to "[e]", edit_challenge_path(challenge.id) %></td>
-      <td><%= link_to "[x]", challenge, method: :delete %></td></tr>
+        <p><%= challenge.title %></p>
       <% end %>
-    </table>
-
-    </div>
-
-
-    <div id="topics">
-    <h2>Topics [<%= link_to "+", new_topic_path %>]</h2>
-    <table>
-      <% @company.topics.each do |topic| %>
-      <tr><td><%= topic.name %></td>
-      <td><%= link_to "[x]", topic, method: :delete %></td></tr>
-      <% end %>
-    </table>
-    </div>
-
-    <div id="feedback_questions">
-    <h2>Feedback Questions [<%= link_to "+", new_feedback_question_path %>]</h2>
-    <% if @company.feedback_questions.any? %>
-      <table>
-        <% @company.feedback_questions.each do |question| %>
-        <tr><td><%= question.prompt %></td>
-        <td><%= link_to "[x]", question, method: :delete %></td></tr>
-        <% end %>
-      </table>
-    <% end %>
-
     </div>
   </div>
-</div>
+
+  <div class="company-module left">
+    <h2 class="center"><br>Topics</h2>
+    <p class="company_link center">
+      <%= link_to "add topic", new_topic_path %>
+    </p>
+
+    <div class="company_list">
+      <% @company.topics.each do |topic| %>
+        <p><%= topic.name %></p>
+      <% end %>
+    </div>
+  </div>
