@@ -1,27 +1,40 @@
 <div class="main_container">
+
+<div class="landing_white_space"></div>
+
   <% if flash[:error] %>
     <div class="error"><%= flash[:error] %></div>
   <% end %>
 
   <div class ="value_prop left">
-    <div class="form_wrap">
-      <h2>register your company</h2>
-      <%= form_tag ({controller: "companies", action: "create"}) do %>
-        <%= label_tag(:name, "Company Name") %><br>
-        <%= text_field_tag(:name) %><br>
-        <%= fields_for Employee.new do |employee| %>
-          <%= employee.label(:name, "Your name") %>
-          <br>
-          <%= employee.text_field(:name) %><br>
-          <%= employee.label(:email, "Your email") %>
-          <br>
-          <%= employee.text_field(:email) %><br>
-          <%= employee.label(:password, "Password") %>
-          <br>
-          <%= employee.password_field(:password) %><br>
+
+    <div id="interview_ease" class="center">
+      <h1 id="landingh1" class="center"><em>InterviewEase</em></h1>
+      <p class="landing_sub center">easy interviews done remotely</p>
+      <p id ="register_click" class="clickable center">register your company</p>
+    </div>
+
+
+    <div id="registration_form" class="hidden">
+      <div class="form_wrap adjust_right">
+        <h2 class="center">register your company</h2>
+        <%= form_tag ({controller: "companies", action: "create"}) do %>
+          <%= label_tag(:name, "Company Name") %><br>
+          <%= text_field_tag(:name) %><br>
+          <%= fields_for Employee.new do |employee| %>
+            <%= employee.label(:name, "Your name") %>
+            <br>
+            <%= employee.text_field(:name) %><br>
+            <%= employee.label(:email, "Your email") %>
+            <br>
+            <%= employee.text_field(:email) %><br>
+            <%= employee.label(:password, "Password") %>
+            <br>
+            <%= employee.password_field(:password) %><br>
+          <% end %>
+          <%= submit_tag "Register Company" %>
         <% end %>
-        <%= submit_tag "Register Company" %>
-      <% end %>
+      </div>
     </div>
   </div>
 
@@ -37,14 +50,19 @@
       <% end %>
     </div>
 
+
+    <p id ="checkin_click" class="clickable center">candidates check in</p>
+
     
-    <div class="form_wrap">
-      <h2>candidates: enter code</h2>
-      <%= form_tag checkins_path do %>
-        <%= label_tag(:identifier, "Interview code") %><br>
-        <%= text_field_tag(:identifier) %><br>
-        <%= submit_tag "Check In" %>
-      <% end %>
+    <div id="checkin_form" class="hidden">
+      <div class="form_wrap">
+        <h2 class="center">enter interview code</h2>
+        <%= form_tag checkins_path do %>
+          <%= label_tag(:identifier, "Interview code") %><br>
+          <%= text_field_tag(:identifier) %><br>
+          <%= submit_tag "Check In" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -53,5 +71,24 @@
 <script>
   $(document).ready(function() {
     $('#email').focus();
+
+    $('#register_click').on('click', function() {
+      $('#interview_ease').hide();
+      $('#registration_form').removeClass('hidden');
+    });
+
+    $('#checkin_click').on('click', function() {
+      $(this).hide();
+      $('#checkin_form').removeClass('hidden');
+    });
+
+
   });
 </script>
+
+
+
+
+
+
+

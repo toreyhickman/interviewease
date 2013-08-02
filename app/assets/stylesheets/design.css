@@ -1,3 +1,16 @@
+footer {
+  color: #999999;
+  width: 100%;
+  margin: 0 auto 100px auto;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 a, a:visited, a:hover {
   color: #3E98D9;
   text-decoration: none;
@@ -48,6 +61,7 @@ body {
 .main_container {
   width: 1000px;
   margin: 70px auto 0 auto;
+  overflow: hidden;
 }
 
 .error {
@@ -65,3 +79,4 @@ span {
   display: inline-block;
   margin: 0 0 8px 0;
 }
+
