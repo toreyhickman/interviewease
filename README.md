@@ -33,18 +33,18 @@ Made as a Dev Bootcamp Final Project from Wednesday July 24 to Thursday August 1
 
 - Set environment variables
 
-- A server should be set up which can run ruby files (our server used rvm) and allows connection via SSH with a username and password (we used a modified ubuntu install on an ec2 server).
+      A server should be set up which can run ruby files (our server used rvm) and allows connection via SSH with a username and password (we used a modified ubuntu install on an ec2 server).
 
-    AWS_HOST: 'server address'
-    AWS_USER: 'server username'
-    AWS_PASS: 'server password'
+      - AWS_HOST: 'server address'
+      - AWS_USER: 'server username'
+      - AWS_PASS: 'server password'
 
-- You also need to register an account to use the [Pusher API](http://pusher.com/)
+      You also need to register an account to use the [Pusher API](http://pusher.com/)
 
-    APP_ID: 'pusher app id'
-    KEY: 'pusher key'
-    PUSHER_KEY: 'pusher key'
-    SECRET: 'pusher secret'
+      - APP_ID: 'pusher app id'
+      - KEY: 'pusher key'
+      - PUSHER_KEY: 'pusher key'
+      - SECRET: 'pusher secret'
 
 - Launch the application server:
 
